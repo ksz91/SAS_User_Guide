@@ -34,7 +34,7 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href=".." class="nav-link">Home</a>
+                                <a href=".." class="nav-link">Übersicht</a>
                             </li>
                             <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Anwendungsroutinen <b class="caret"></b></a>
@@ -119,40 +119,53 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="transponieren">Transponieren</h1>
-<p>Einen neuen Datensatz erzeugen, in dem aus den Spalten Zeilen werden und umgekehrt.</p>
+<p>Die Anwendungsroutine "Transponieren" ermöglicht es, die Struktur eines Datensatzes zu ändern. Der Datensatz kann entweder vertikal oder horizontal strukturiert sein.  </p>
+<p>Beispiel: Ein Datensatz enthält für jede Person drei numerische Variablen - das Alter, die Grösse und das Gewicht.</p>
+<ul>
+<li>In der <em>vertikalen</em> Form sind die Werte für Alter, Grösse und Gewicht alle untereinander, also in einer Variable, erfasst. Für jede Person im Datensatz sind also drei Beobachtungen vorhanden.  </li>
+</ul>
+<p><img alt="" src="../img/Transp_1.png" /></p>
+<ul>
+<li>In der <em>horizontalen</em> Form sind die Werte auf drei verschiedene Variablen aufgeteilt, folglich existiert nur eine Beobachtung pro Person.   </li>
+</ul>
+<p><img alt="" src="../img/Transp_2.png" /></p>
 <h2 id="horizontalisierung">Horizontalisierung</h2>
-<p><strong>Ausgangslage</strong><br />
-<img alt="image" src="https://user-images.githubusercontent.com/42339363/98912170-015e1680-24c6-11eb-918e-a2041e28d89d.png" /></p>
-<p><strong>Ziel</strong><br />
-<img alt="image" src="https://user-images.githubusercontent.com/42339363/98912375-4f731a00-24c6-11eb-89ee-ec834e3e4106.png" />  </p>
-<p><strong>Lösungsweg SAS Enterprise Guide:</strong>  </p>
-<p>Schritt 1: Anwendungsroutine "Transponieren" auswählen.
-<img alt="image" src="https://user-images.githubusercontent.com/42339363/98913315-7e3dc000-24c7-11eb-8fba-1b8e100a0e06.png" />  </p>
-<p>Schritt 2: Die Variablen den richtigen Rollen zuordnen:</p>
+<p>Liegen die Daten in der vertikalen Form vor, werden aber für die Weiterverarbeitung in der horizontalen Form gebraucht, so kann das mittels «Transponieren» erreicht werden.  </p>
+<p><img alt="" src="../img/Transp_1.png" />  </p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<img alt="" src="../img/arrow_down.png" />  </p>
+<p><img alt="" src="../img/Transp_3.png" /><br />
+<br></p>
+<h4 id="losungsweg-sas-enterprise-guide">Lösungsweg SAS Enterprise Guide</h4>
+<p><em>Schritt 1</em>: Anwendungsroutine «Transponieren» auswählen.</p>
+<p><img alt="" src="../img/Transp_4.png" />  </p>
+<p><em>Schritt 2</em>: Die Variablen den richtigen Rollen zuordnen:</p>
 <ul>
 <li><code>Variable transponieren</code>: Hier muss die Analysevariable ausgewählt werden, deren Werte auf verschiedene Spalten aufgeteilt werden soll. In diesem Beispiel also <em>Wert</em>.  </li>
 <li><code>Neue Spaltennamen (Maximal: 1)</code>: Hier wird die Variable ausgewählt, deren Ausprägungen die neuen Variablen bilden bzw. benennen sollen. In diesem Beispiel also <em>Merkmal</em>.  </li>
 <li><code>Analyse gruppieren nach</code>: In diesem Beispiel die Variablen <em>Name</em> und <em>Geschlecht</em>. Hier können auch noch mehr Variablen gewählt werden, z.B. wenn der Wert nicht nur nach Name und Geschlecht, sondern z.B. auch noch nach Nationalität ausgewiesen würde.  </li>
 </ul>
-<p><img alt="image" src="https://user-images.githubusercontent.com/42339363/98917395-99f79500-24cc-11eb-9cba-9cd36e46ae57.png" /> </p>
-<p>Schritt 3: Das Häkchen bei "Präfix verwenden" rausnehmen, damit die neuen Spaltennamen nicht mit dem Wort "Spalte" (Default) ergänzt werden.<br />
-<img alt="image" src="https://user-images.githubusercontent.com/42339363/98912893-fb1c6a00-24c6-11eb-9fd4-e042648ac9f5.png" />  </p>
+<p><img alt="" src="../img/Transp_5.png" />  </p>
+<p><em>Schritt 3</em>: Das Häkchen bei "Präfix verwenden" rausnehmen, damit die neuen Spaltennamen nicht mit dem Wort "Spalte" (Default) ergänzt werden.  </p>
+<p><img alt="" src="../img/Transp_6.png" />  </p>
 <h2 id="vertikalisierung">Vertikalisierung</h2>
-<p><strong>Ausgangslage</strong><br />
-<img alt="image" src="https://user-images.githubusercontent.com/42339363/98918378-d677c080-24cd-11eb-9a9e-5ae481d24e42.png" /></p>
-<p><strong>Ziel</strong><br />
-<img alt="image" src="https://user-images.githubusercontent.com/42339363/98920490-746c8a80-24d0-11eb-9cd9-d99a2817ec4c.png" /></p>
-<p><strong>Lösungsweg SAS Enterprise Guide</strong>  </p>
-<p>Schritt 1: Anwendungsroutine "Transponieren" auswählen.
-<img alt="image" src="https://user-images.githubusercontent.com/42339363/98913315-7e3dc000-24c7-11eb-8fba-1b8e100a0e06.png" />  </p>
-<p>Schritt 2: Die Variablen den richtigen Rollen zuordnen:  </p>
+<p>Liegen die Daten in der horizontalen Form vor, werden aber für die Weiterverarbeitung in der vertikalen Form gebraucht, so kann das ebenfalls mittels «Transponieren» erreicht werden.  </p>
+<p><img alt="" src="../img/Transp_2.png" />  </p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<img alt="" src="../img/arrow_down.png" />  </p>
+<p><img alt="" src="../img/Transp_1_1.png" />  </p>
+<p><br></p>
+<h4 id="losungsweg-sas-enterprise-guide_1">Lösungsweg SAS Enterprise Guide</h4>
+<p><em>Schritt 1</em>: Anwendungsroutine «Transponieren» auswählen.</p>
+<p><img alt="" src="../img/Transp_7.png" />  </p>
+<p><br>
+<em>Schritt 2</em>: Die Variablen den richtigen Rollen zuordnen:  </p>
 <ul>
 <li><code>Variable transponieren</code>: Hier müssen die Analysevariablen ausgewählt werden, deren Werte in einer Spalte zusammengefasst werden sollen. In diesem Beispiel also <em>Alter</em>, <em>Grösse</em> und <em>Gewicht</em>.  </li>
 <li><code>Analyse gruppieren nach</code>: In diesem Beispiel die Variablen <em>Name</em> und <em>Geschlecht</em>. Hier können auch noch mehr Variablen gewählt werden, z.B. wenn der Wert nicht nur nach Name und Geschlecht, sondern z.B. auch noch nach Nationalität ausgewiesen würde.  </li>
 </ul>
-<p><img alt="image" src="https://user-images.githubusercontent.com/42339363/98919201-d3c99b00-24ce-11eb-82c3-92cf35cb245f.png" />  </p>
-<p>Schritt 3: Namen für Quellspalte setzen, in diesem Fall soll sie <em>Merkmal</em> heissen.
-<img alt="image" src="https://user-images.githubusercontent.com/42339363/98920246-29eb0e00-24d0-11eb-8205-f2b0d5a9eef8.png" /></p></div>
+<p><img alt="" src="../img/Transp_8.png" /><br />
+<br></p>
+<p><em>Schritt 3</em>: Namen für Quellspalte setzen, in diesem Fall soll sie <em>Merkmal</em> heissen.</p>
+<p><img alt="" src="../img/Transp_9.png" />  </p></div>
             </div>
         </div>
 
