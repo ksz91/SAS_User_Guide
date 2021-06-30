@@ -13,6 +13,7 @@
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/docco.min.css">
+        <link href="../extra.css" rel="stylesheet">
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
         <script src="../js/bootstrap.min.js" defer></script>
@@ -36,34 +37,32 @@
                             <li class="navitem">
                                 <a href=".." class="nav-link">Übersicht</a>
                             </li>
-                            <li class="dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Anwendungsroutinen <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../zsftabelle/" class="dropdown-item">Zusammenfassungstabelle</a>
-</li>
-                                    
-<li>
-    <a href="./" class="dropdown-item active">Transponieren</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Formate <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../grundlagen/" class="dropdown-item">Grundlagen</a>
-</li>
-                                    
-<li>
-    <a href="../sortierung/" class="dropdown-item">Sortierung mit Formaten</a>
-</li>
-                                </ul>
+                            <li class="navitem">
+                                <a href="../variable/" class="nav-link">Neue Variable</a>
                             </li>
                             <li class="navitem">
-                                <a href="../tsv/" class="nav-link">TSV erstellen</a>
+                                <a href="../formate/" class="nav-link">Formate</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Transponieren</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../merge/" class="nav-link">Merge/Join</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../reports/" class="nav-link">Tabellen/Reports</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../import_export/" class="nav-link">Import/Export</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Spezialthemen <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../tsv/" class="dropdown-item">TSV erstellen</a>
+</li>
+                                </ul>
                             </li>
                         </ul>
 
@@ -74,12 +73,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../zsftabelle/" class="nav-link">
+                                <a rel="prev" href="../formate/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../grundlagen/" class="nav-link">
+                                <a rel="next" href="../merge/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -119,7 +118,7 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="transponieren">Transponieren</h1>
-<p>Die Anwendungsroutine "Transponieren" ermöglicht es, die Struktur eines Datensatzes zu ändern. Der Datensatz kann entweder vertikal oder horizontal strukturiert sein.  </p>
+<p>Die Anwendungsroutine «Transponieren» ermöglicht es, die Struktur eines Datensatzes zu ändern. Der Datensatz kann entweder vertikal oder horizontal strukturiert sein.  </p>
 <p>Beispiel: Ein Datensatz enthält für jede Person drei numerische Variablen - das Alter, die Grösse und das Gewicht.</p>
 <ul>
 <li>In der <em>vertikalen</em> Form sind die Werte für Alter, Grösse und Gewicht alle untereinander, also in einer Variable, erfasst. Für jede Person im Datensatz sind also drei Beobachtungen vorhanden.  </li>
@@ -135,7 +134,7 @@
 <p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<img alt="" src="../img/arrow_down.png" />  </p>
 <p><img alt="" src="../img/Transp_3.png" /><br />
 <br></p>
-<h4 id="losungsweg-sas-enterprise-guide">Lösungsweg SAS Enterprise Guide</h4>
+<h3 id="losungsweg-sas-enterprise-guide">Lösungsweg SAS Enterprise Guide</h3>
 <p><em>Schritt 1</em>: Anwendungsroutine «Transponieren» auswählen.</p>
 <p><img alt="" src="../img/Transp_4.png" />  </p>
 <p><em>Schritt 2</em>: Die Variablen den richtigen Rollen zuordnen:</p>
@@ -153,7 +152,7 @@
 <p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<img alt="" src="../img/arrow_down.png" />  </p>
 <p><img alt="" src="../img/Transp_1_1.png" />  </p>
 <p><br></p>
-<h4 id="losungsweg-sas-enterprise-guide_1">Lösungsweg SAS Enterprise Guide</h4>
+<h3 id="losungsweg-sas-enterprise-guide_1">Lösungsweg SAS Enterprise Guide</h3>
 <p><em>Schritt 1</em>: Anwendungsroutine «Transponieren» auswählen.</p>
 <p><img alt="" src="../img/Transp_7.png" />  </p>
 <p><br>
