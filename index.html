@@ -12,19 +12,19 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
         <link href="css/extra.css" rel="stylesheet">
 
         <script src="js/jquery-1.10.2.min.js" defer></script>
         <script src="js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body class="homepage">
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href=".">SAS-Wiki</a>
+                <a class="navbar-brand" href="index.html">SAS-Wiki</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -35,35 +35,35 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem active">
-                                <a href="." class="nav-link">Übersicht</a>
+                                <a href="index.html" class="nav-link">Übersicht</a>
                             </li>
                             <li class="navitem">
-                                <a href="import/" class="nav-link">Import</a>
+                                <a href="import.html" class="nav-link">Import</a>
                             </li>
                             <li class="navitem">
-                                <a href="variable/" class="nav-link">Neue Variable</a>
+                                <a href="variable.html" class="nav-link">Neue Variable</a>
                             </li>
                             <li class="navitem">
-                                <a href="formate/" class="nav-link">Formate</a>
+                                <a href="formate.html" class="nav-link">Formate</a>
                             </li>
                             <li class="navitem">
-                                <a href="transp/" class="nav-link">Transponieren</a>
+                                <a href="transp.html" class="nav-link">Transponieren</a>
                             </li>
                             <li class="navitem">
-                                <a href="merge/" class="nav-link">Merge/Join</a>
+                                <a href="merge.html" class="nav-link">Merge/Join</a>
                             </li>
                             <li class="navitem">
-                                <a href="reports/" class="nav-link">Tabellen/Reports</a>
+                                <a href="reports.html" class="nav-link">Tabellen/Reports</a>
                             </li>
                             <li class="navitem">
-                                <a href="export/" class="nav-link">Export</a>
+                                <a href="export.html" class="nav-link">Export</a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Spezialthemen <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="tsv/" class="dropdown-item">TSV erstellen</a>
+    <a href="tsv.html" class="dropdown-item">TSV erstellen</a>
 </li>
                                 </ul>
                             </li>
@@ -81,7 +81,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="import/" class="nav-link">
+                                <a rel="next" href="import.html" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -119,12 +119,12 @@
   <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">Import von Daten</h3>
+        <h3 class="card-title"><a href="import.html">Import von Daten</h3></a>
         <p class="card-text">
-            <ul>
-            <li>libname statement</li>
+            <ul style="margin:0;padding:0;list-style:none;">
+            <li>LIBNAME Statement</li>
             <li>Anwendungsroutine</li>
-            <li>Proc Import</li>
+            <li>PROC IMPORT</li>
              </ul> 
         </p>
       </div>
@@ -133,11 +133,11 @@
   <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">Formate anwenden</h3>
+        <h3 class="card-title"><a href="formate.html">Formate anwenden</h3></a>
         <p class="card-text">
-            <ul>
+            <ul style="margin:0;padding:0;list-style:none;">
             <li>SAS-Formate</li>
-            <li>Benutzerdefinierte Formate</li>
+            <li>Benutzerdefinierte Formate (PROC FORMAT)</li>
              </ul> 
         </p>
       </div>
@@ -146,11 +146,11 @@
     <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">Neue Variable erstellen</h3>
+        <h3 class="card-title"><a href="variable.html">Neue Variable erstellen</h3></a>
         <p class="card-text">
-            <ul>
-            <li>SAS-Formate</li>
-            <li>Benutzerdefinierte Formate</li>
+            <ul style="margin:0;padding:0;list-style:none;">
+            <li>Nützliche Befehle</li>
+            <li>Schleifen (CASE, IF/ELSE, etc.)</li>
              </ul> 
         </p>
       </div>
@@ -161,11 +161,11 @@
   <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">Transponieren</h3>
+        <h3 class="card-title"><a href="transp.html">Transponieren</h3></a>
         <p class="card-text">
-            <ul>
-            <li>SAS-Formate</li>
-            <li>Benutzerdefinierte Formate</li>
+            <ul style="margin:0;padding:0;list-style:none;">
+            <li>Horizontalisierung</li>
+            <li>Vertikalisierung</li> <br> 
              </ul> 
         </p>
       </div>
@@ -174,11 +174,12 @@
   <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">Merge, Join</h3>
+        <h3 class="card-title"><a href="merge.html">Merge, Join</h3></a>
         <p class="card-text">
-            <ul>
-            <li>SAS-Formate</li>
-            <li>Benutzerdefinierte Formate</li>
+            <ul style="margin:0;padding:0;list-style:none;">
+            <li>Join mittels Abfrage</li>
+            <li>DATA Step</li>
+            <li>MERGE</li>
              </ul> 
         </p>
       </div>
@@ -187,11 +188,12 @@
     <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">Tabellen und Reports</h3>
+        <h3 class="card-title"><a href="reports.html">Tabellen und Reports</h3></a>
         <p class="card-text">
-            <ul>
-            <li>SAS-Formate</li>
-            <li>Benutzerdefinierte Formate</li>
+            <ul style="margin:0;padding:0;list-style:none;">
+            <li>Zusammenfassungstabelle</li>
+            <li>PROC TABULATE</li>
+            <li>PROC REPORT</li>
              </ul> 
         </p>
       </div>
@@ -202,11 +204,24 @@
   <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">Export von Daten</h3>
+        <h3 class="card-title"><a href="export.html">Export von Daten</h3></a>
         <p class="card-text">
-            <ul>
-            <li>SAS-Formate</li>
-            <li>Benutzerdefinierte Formate</li>
+            <ul style="margin:0;padding:0;list-style:none;">
+            <li>ODS EXCEL</li>
+            <li>PROC EXPORT</li> <br>
+             </ul> 
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Spezialthemen</h3>
+        <p class="card-text">
+            <ul style="margin:0;padding:0;list-style:none;">
+            <li><a href="tsv.html">TSV erstellen</a></li>
+            <li>Weitere Themen folgen...</li> <br>
              </ul> 
         </p>
       </div>
@@ -237,16 +252,13 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             </div>
             <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
+                <p>From here you can search these documents. Enter your search terms below.</p>
                 <form>
                     <div class="form-group">
                         <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results"></div>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
             </div>
             <div class="modal-footer">
             </div>
@@ -297,6 +309,6 @@
 </html>
 
 <!--
-MkDocs version : 1.1.2
-Build Date UTC : 2021-06-30 18:51:11.007000+00:00
+MkDocs version : 1.2.1
+Build Date UTC : 2021-07-01 12:05:46.613457+00:00
 -->
