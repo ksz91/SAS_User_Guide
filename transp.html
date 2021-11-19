@@ -147,20 +147,18 @@
 <p>Die Anwendungsroutine «Transponieren» ermöglicht es, die Struktur eines Datensatzes zu ändern. Der Datensatz kann entweder vertikal oder horizontal strukturiert sein.  </p>
 <p>Beispiel: Ein Datensatz enthält für jede Person drei numerische Variablen - das Alter, die Grösse und das Gewicht.</p>
 <ul>
-<li>In der <em>vertikalen</em> Form sind die Werte für Alter, Grösse und Gewicht alle untereinander, also in einer Variable, erfasst. Für jede Person im Datensatz sind also drei Beobachtungen vorhanden.  </li>
+<li>In der <em>vertikalen</em> Form sind die Werte für Alter, Grösse und Gewicht alle untereinander, also in einer Variable, erfasst. Für jede Person im Datensatz sind also drei Beobachtungen vorhanden.<br />
+<img alt="" src="img/Transp_1.png" /></li>
+<li>In der <em>horizontalen</em> Form sind die Werte auf drei verschiedene Variablen aufgeteilt, folglich existiert nur eine Beobachtung pro Person. <br />
+<img alt="" src="img/Transp_2.png" /></li>
 </ul>
-<p><img alt="" src="img/Transp_1.png" /></p>
-<ul>
-<li>In der <em>horizontalen</em> Form sind die Werte auf drei verschiedene Variablen aufgeteilt, folglich existiert nur eine Beobachtung pro Person.   </li>
-</ul>
-<p><img alt="" src="img/Transp_2.png" /></p>
 <h2 id="horizontalisierung">Horizontalisierung</h2>
-<p>Liegen die Daten in der vertikalen Form vor, werden aber für die Weiterverarbeitung in der horizontalen Form gebraucht, so kann das mittels «Transponieren» erreicht werden.  </p>
-<p><img alt="" src="img/Transp_1.png" /><br />
+<p>Liegen die Daten in der vertikalen Form vor, werden aber für die Weiterverarbeitung in der horizontalen Form gebraucht, so kann das mittels «Transponieren» erreicht werden.<br />
+<img alt="" src="img/Transp_1.png" /><br />
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&darr;</strong></span><br />
 <img alt="" src="img/Transp_3.png" /></p>
 <h4 id="losungsweg-sas-enterprise-guide">Lösungsweg SAS Enterprise Guide</h4>
-<p><em>Schritt 1</em>: Anwendungsroutine «Transponieren» auswählen.</p>
+<p><em>Schritt 1</em>: Anwendungsroutine «Transponieren» auswählen. </p>
 <p><img alt="" src="img/Transp_4.png" />  </p>
 <p><em>Schritt 2</em>: Die Variablen den richtigen Rollen zuordnen:</p>
 <ul>
@@ -168,9 +166,9 @@
 <li><code>Neue Spaltennamen (Maximal: 1)</code>: Hier wird die Variable ausgewählt, deren Ausprägungen die neuen Variablen bilden bzw. benennen sollen. In diesem Beispiel also <em>Merkmal</em>.  </li>
 <li><code>Analyse gruppieren nach</code>: In diesem Beispiel die Variablen <em>Name</em> und <em>Geschlecht</em>. Hier können auch noch mehr Variablen gewählt werden, z.B. wenn der Wert nicht nur nach Name und Geschlecht, sondern z.B. auch noch nach Nationalität ausgewiesen würde.  </li>
 </ul>
-<p><img alt="" src="img/Transp_5.png" />  </p>
-<p><em>Schritt 3</em>: Das Häkchen bei "Präfix verwenden" rausnehmen, damit die neuen Spaltennamen nicht mit dem Wort "Spalte" (Default) ergänzt werden.  </p>
-<p><img alt="" src="img/Transp_6.png" />  </p>
+<p><img alt="" src="img/Transp_5.png" /><br />
+<em>Schritt 3</em>: Das Häkchen bei "Präfix verwenden" rausnehmen, damit die neuen Spaltennamen nicht mit dem Wort "Spalte" (Default) ergänzt werden.<br />
+<img alt="" src="img/Transp_6.png" />  </p>
 <h2 id="vertikalisierung">Vertikalisierung</h2>
 <p>Liegen die Daten in der horizontalen Form vor, werden aber für die Weiterverarbeitung in der vertikalen Form gebraucht, so kann das ebenfalls mittels «Transponieren» erreicht werden.  </p>
 <p><img alt="" src="img/Transp_2.png" /><br />
@@ -178,7 +176,7 @@
 <img alt="" src="img/Transp_1_1.png" />  </p>
 <h4 id="losungsweg-sas-enterprise-guide_1">Lösungsweg SAS Enterprise Guide</h4>
 <p><em>Schritt 1</em>: Anwendungsroutine «Transponieren» auswählen.</p>
-<p><img alt="" src="img/Transp_7.png" />  </p>
+<p><img alt="" src="img/Transp_4.png" />  </p>
 <p><br>
 <em>Schritt 2</em>: Die Variablen den richtigen Rollen zuordnen:  </p>
 <ul>
