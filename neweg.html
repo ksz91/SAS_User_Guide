@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="img/favicon.ico">
-        <title>SAS Enterprise Guide 8.3 - SAS User Guide</title>
+        <title>Neweg - SAS User Guide</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
@@ -72,12 +72,12 @@
                             <li class="navitem">
                                 <a href="export.html" class="nav-link">Daten exportieren</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Spezialthemen <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="neweg.html" class="dropdown-item active">SAS Enterprise Guide 8.3</a>
+    <a href="spezial.html" class="dropdown-item">Übersicht</a>
 </li>
                                     
 <li>
@@ -97,16 +97,6 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" href="export.html" class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="tsv.html" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
                     </ul>
                 </div>
             </div>
@@ -143,6 +133,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#error-you-cannot-open" class="nav-link">ERROR: You cannot open...</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -176,7 +170,12 @@ Natürlich kann auch weiterhin wie bisher über die Projektübersicht auf der li
 Wem das zu unübersichtlich ist, kann unter «Anzeigen -&gt; Voreinstellungen für Programm-Reiter» die Einstellung «Standard» auswählen.<br />
 <img alt="" src="img/neweg5.png" /><br />
 So wird immer nur ein Programm-Reiter angezeigt und in der Leiste oben kann zwischen den Reitern «Code», «Log» und «Ausgabedaten» gewechselt werden.
-<img alt="" src="img/neweg6.png" />  </p></div>
+<img alt="" src="img/neweg6.png" />  </p>
+<h2 id="error-you-cannot-open">ERROR: You cannot open...</h2>
+<p>Ist ein Datensatz oben in der Leiste geöffnet, kann er nicht überschrieben werden. Das Ausführen eines entsprechenden Programms führt dann zur Fehlermeldung «ERROR: You cannot open WORK.WOMEN.DATA for output access with member-level control because WORK.WOMEN.DATA is in use by you in 
+resource environment IOM ROOT COMP ENV.» Um diesen Fehler zu beheben, müssen also vor dem Ausführen des Programms lediglich alle im Programm referenzierten Datensätze in der Leiste oben geschlossen werden.   <br />
+<img alt="" src="img/neweg11.png" /> <br />
+<img alt="" src="img/neweg12.png" />  </p></div>
             </div>
         </div>
 
