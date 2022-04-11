@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="img/favicon.ico">
-        <title>Server - SAS User Guide</title>
+        <title>Server-Migration - SAS User Guide</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
@@ -72,16 +72,16 @@
                             <li class="navitem">
                                 <a href="export.html" class="nav-link">Daten exportieren</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Spezialthemen <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="neweg.html" class="dropdown-item">Enterprise Guide 8.3</a>
+    <a href="server.html" class="dropdown-item active">Server-Migration</a>
 </li>
                                     
 <li>
-    <a href="spezial.html" class="dropdown-item">Übersicht</a>
+    <a href="neweg.html" class="dropdown-item">Enterprise Guide 8.3</a>
 </li>
                                     
 <li>
@@ -101,6 +101,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="export.html" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="neweg.html" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -121,6 +131,10 @@
             
             <li class="nav-item" data-level="1"><a href="#server-migration" class="nav-link">Server-Migration</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#libname-statements" class="nav-link">Libname Statements</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#export-mit-ods-excel" class="nav-link">Export mit ODS EXCEL</a>
               <ul class="nav flex-column">
               </ul>
@@ -134,6 +148,15 @@
 
 <h1 id="server-migration">Server-Migration</h1>
 <hr />
+<p>Die Server-Migration hat teilweise Auswirkungen auf bestehende SAS-Projekte. In ein paar wenigen Fällen funktioniert bestehender Code nicht mehr oder wirkt sich anders aus als bisher. Dies betrifft vor allem den Import und Export von Daten.</p>
+<h2 id="libname-statements">Libname Statements</h2>
+<p>Libname Statements, die explizit den alten Servernamen verwenden, müssen angepasst werden:</p>
+<p>Bisher:<br />
+<code>libname name '\\pdprodsv09\data\DWH_Name' access=readonly;</code>  </p>
+<p>Neu:<br />
+<code>libname name '\\pdstatasvpsas05\data\DWH_Name' access=readonly;</code></p>
+<p>Überall wo die Libname Statements via «filedsn» definiert sind, muss nichts angepasst werden:<br />
+<code>libname name odbc noprompt='filedsn=\\bs.ch\dfs\BS\PD\PD-StatA\Programs\DSN\prod\PXY.Z.DWH_Name.dsn;' schema=xyz access=readonly;</code></p>
 <h2 id="export-mit-ods-excel">Export mit ODS EXCEL</h2>
 <p>Ziel: Ein Excel-File mit je zwei Tabellen pro Tabellenblatt generieren:<br />
 <img alt="" src="img/server3.png" /><br />
