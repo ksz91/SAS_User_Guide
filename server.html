@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="img/favicon.ico">
-        <title>Übersicht - SAS User Guide</title>
+        <title>Server - SAS User Guide</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
@@ -77,6 +77,10 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
+    <a href="neweg.html" class="dropdown-item">Enterprise Guide 8.3</a>
+</li>
+                                    
+<li>
     <a href="spezial.html" class="dropdown-item">Übersicht</a>
 </li>
                                     
@@ -115,8 +119,12 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#ubersicht" class="nav-link">Übersicht</a>
+            <li class="nav-item" data-level="1"><a href="#server-migration" class="nav-link">Server-Migration</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#export-mit-ods-excel" class="nav-link">Export mit ODS EXCEL</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -124,138 +132,18 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="ubersicht">Übersicht</h1>
+<h1 id="server-migration">Server-Migration</h1>
 <hr />
-<div class="jumbotron">
-<div class="row mb-3">
-  <div class="col-sm-4">
-    <div class="card">
-    <h3 class="card-header"><a href="import.html" style="color: #00AA9E;">Daten einlesen</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>LIBNAME Statement</li>
-            <li>Anwendungsroutine</li>
-            <li>PROC IMPORT</li>
-             </ul> 
-        </p>
-      </div>
-    </div>
-   </div>
-     <div class="col-sm-4">
-    <div class="card">
-<h3 class="card-header"><a href="export.html" style="color:#00AA9E;">Daten exportieren</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>ODS EXCEL</li>
-            <li>PROC EXPORT</li> <br>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-    <div class="col-sm-4">
-    <div class="card">
-<h3 class="card-header"><a href="spezial.html"style="color:#923F8D;">Spezialthemen</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>TSV erstellen</li>
-            <li>Jahrbuchtabellen auf Knopfdruck</li> 
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-    </div>
-<div class="row mb-3">
-  <div class="col-sm-4">
-    <div class="card">
-        <h3 class="card-header"><a href="formate.html">Formate anwenden</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>SAS-Formate</li>
-            <li>Benutzerdefinierte Formate (PROC FORMAT)</li>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-    <div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="abfrage.html">Abfrage erstellen</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>Auswahl, Filtern, Sortieren</li>
-            <li>Zusammenfassung</li>
-            <li>Neue Variable erstellen</li>
-             </ul> 
-        </p>
-      </div>
-    </div>
-    </div>
-  <div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="transp.html">Transponieren</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>Horizontalisierung</li>
-            <li>Vertikalisierung</li> <br> 
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-    </div>
-<div class="row mb-3">
-  <div class="col-sm-4">
-    <div class="card">
-      <h3 class="card-header"><a href="merge.html">Merge, Join</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>Join mittels Abfrage</li>
-            <li>DATA Step</li>
-            <li>MERGE</li>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-    <div class="col-sm-4">
-    <div class="card">
-    <h3 class="card-header"><a href="reports.html">Tabellen und Reports</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>Zusammenfassungstabelle</li>
-            <li>PROC TABULATE</li>
-            <li>PROC REPORT</li>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="card">
-    <h3 class="card-header"><a href="reports.html">Stichprobenanalyse</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>PROC SURVEYFREQ</li>
-            <li>PROC SURVEYMEANS</li> <br>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div></div>
+<h2 id="export-mit-ods-excel">Export mit ODS EXCEL</h2>
+<p>Ziel: Ein Excel-File mit je zwei Tabellen pro Tabellenblatt generieren:<br />
+<img alt="" src="img/server3.png" /><br />
+Bisher konnte das mit folgendem Code erreicht werden:<br />
+<img alt="" src="img/server2.png" /><br />
+Ein neuer Eintrag bei <code>sheet_name</code> im options-Statement erzeugte ein neues Tabellenblatt in Excel. Die Option <code>sheet_interval="none"</code> verhinderte, dass für jedes Proc Print-Statement ein neues Sheet generiert wird.  </p>
+<p>Das funktioniert nun nicht mehr so. Ein neuer Eintrag bei <code>sheet_name</code> generiert nicht mehr automatisch ein neues Tabellenblatt. Oben gezeigter Code generiert nun ein Excel-File mit nur einem Tabellenblatt «Sheet1», in dem der Output aller Proc Print-Statements untereinander geschrieben wird.  </p>
+<p>Neu ist folgender Code nötig:<br />
+<img alt="" src="img/server1.png" /><br />
+Immer wenn ein neues Tabellenblatt erzeugt werden soll, ist die Option <code>sheet_interval="now"</code> nötig.</p></div>
             </div>
         </div>
 
