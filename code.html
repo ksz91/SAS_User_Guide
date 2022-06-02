@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="img/favicon.ico">
-        <title>Daten exportieren - SAS User Guide</title>
+        <title>Nützlicher Code - SAS User Guide</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
@@ -46,7 +46,7 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="navitem active">
+                            <li class="navitem">
                                 <a href="export.html" class="nav-link">Daten exportieren</a>
                             </li>
                             <li class="dropdown">
@@ -62,7 +62,7 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="navitem">
+                            <li class="navitem active">
                                 <a href="code.html" class="nav-link">Nützlicher Code</a>
                             </li>
                         </ul>
@@ -74,12 +74,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="transp.html" class="nav-link">
+                                <a rel="prev" href="neweg.html" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="server.html" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -101,9 +101,9 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#daten-exportieren" class="nav-link">Daten exportieren</a>
+            <li class="nav-item" data-level="1"><a href="#nutzlicher-code" class="nav-link">Nützlicher Code</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#an-microsoft-excel-senden" class="nav-link">An Microsoft Excel senden</a>
+            <li class="nav-item" data-level="2"><a href="#put" class="nav-link">put()</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -114,21 +114,24 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="daten-exportieren">Daten exportieren</h1>
+<h1 id="nutzlicher-code">Nützlicher Code</h1>
 <hr />
-<h2 id="an-microsoft-excel-senden">An Microsoft Excel senden</h2>
-<p>Der Output einer Anwendungsroutine (bspw. Zusammenfassungstabelle) kann folgendermassen in Excel exportiert werden:<br />
-<img alt="" src="img/export1.png" />  </p>
-<p>Problem: Ist im Enterprise Guide unter «Extras -&gt; Optionen -&gt; Ergebnisse -&gt; Allgemein» das Ergebnisformat HTML ausgewählt, dann wird der entsprechende Output mit einem Punkt als Dezimaltrennzeichen exportiert. In Excel kann damit dann nicht weitergerechnet werden und im schlimmsten Fall wird die Zahl sogar als Datum erkannt.<br />
-<img alt="" src="img/export2.png" /> </p>
-<p>Es gibt mehrere Möglichkeiten, dieses Problem zu umgehen:  </p>
-<ul>
-<li>Als Ergebnisformat «SAS Report» anstatt «HTML» auswählen. Wird der Output eines SAS Reports mittels «An Microsoft Excel senden» exportiert, werden die Dezimaltrennzeichen korrekt angezeigt.</li>
-<li>Als Ergebnisformat zusätzlich «Excel» auswählen. So wird beim Ausführen der Anwendungsroutine direkt ein Excel-File generiert, das direkt aus SAS mittels Doppelklick geöffnet werden kann.  </li>
-<li>Für die numerische Variable das Format <code>NUMXw.d</code> auswählen. Bei einer Zusammenfassungstabelle wird das folgendermassen gemacht: Rechtsklick auf die Statistik (bspw. Sum) -&gt; Datenwerteigenschaften -&gt; Ausgabeformat -&gt; Numerisch -&gt; NUMXw.d.
- <img alt="" src="img/export3.png" />   </li>
-<li>Zum Exportieren entweder «ODS EXCEL» oder «Proc Export» verwenden (Einträge dazu folgen).</li>
-</ul></div>
+<p>Auch beim Arbeiten mit Abfragen und Anwendungsroutinen des SAS Enterprise Guide kommt man teilweise nicht ganz um die Verwendung von Code bzw. Funktionen herum. Oft ist es die einzige oder zumindest die beste Möglichkeit,
+auf einfach und schnelle Art und Weise neue Variablen zu generieren. Im Folgenden sind einige nützliche Funktionen und Statements zusammengetragen:</p>
+<h2 id="put">put()</h2>
+<p>Mit der put()-Funktion lässt sich eine numerische Variable mittels Format in eine Textvariable umwandeln.</p>
+<p><code>put(Variable, Format.)</code></p>
+<p>Anwendungsbeispiel:
+Die Personen in einem Datensatz sollen anhand ihres Alters verschiedenen Altersgruppen zugeordnet werden. Anschliessend soll die Anzahl Personen pro Altersgruppe und Geschlecht gezählt werden.<br />
+<img alt="" src="img/code1.png" /> </p>
+<p>Problem: Es reicht nicht, der Variable <em>Alter</em> in der Abfrage einfach ein Format für die Altersgruppen zuzuweisen. Das Format bzw. die Altersgruppe ist zwar im Vordergrund sichtbar, die Variable enthält aber immer noch das exakte Alter. 
+Wird nun die Anzahl Personen nach Geschlecht und Alter gezählt, resultiert überall eine 1, auch wenn es bspw. drei Frauen in der Altersgruppe «20 bis 60» gäbe.<br />
+<img alt="" src="img/code2.png" /> <img alt="" src="img/code5.png" /> </p>
+<p>Ein möglicher Lösungsansatz ist es, die numerische Variable <em>Alter</em> in eine Textvariable <em>Altersgruppe</em> umzuwandeln:<br />
+«Neue berechnete Spalte hinzufügen <img alt="" src="img/neue_spalte.png" /> -&gt; Erweiterter Ausdruck -&gt; put(Alter, fmt_alter.)»<br />
+<img alt="" src="img/code3.png" /></p>
+<p>Anschliessend kann die Anzahl Personen nach der Variable <em>Geschlecht</em> und der neuen Variable <em>Altersgruppe</em> gezählt werden.<br />
+<img alt="" src="img/code4.png" />  </p></div>
             </div>
         </div>
 
