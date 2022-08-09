@@ -143,7 +143,8 @@ Die Personen in einem Datensatz sollen anhand ihres Alters verschiedenen Altersg
 Wird nun die Anzahl Personen nach Geschlecht und Alter gezählt, resultiert überall eine 1, auch wenn es bspw. drei Frauen in der Altersgruppe «20 bis 60» gäbe.  </p>
 <p><img alt="img" src="img/code2.png" /> <img alt="" src="img/code5.png" /> </p>
 <p>Ein möglicher Lösungsansatz ist es, die numerische Variable <em>Alter</em> in eine Textvariable <em>Altersgruppe</em> umzuwandeln:  </p>
-<p><code>put(t1.Alter, fmt_alter.)</code></p>
+<p><code>put(t1.Alter, fmt_alter.)</code>  </p>
+<p><img alt="img" src="img/code13.png" />  </p>
 <p>Anschliessend kann die Anzahl Personen nach der Variable <em>Geschlecht</em> und der neuen Variable <em>Altersgruppe</em> gezählt werden.  </p>
 <p><img alt="img" src="img/code4.png" />  </p>
 <p>Hinweis: Dieses Problem kann auch mittels <a href="code.html#case-statement">CASE Statement</a> gelöst werden.</p>
