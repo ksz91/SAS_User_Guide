@@ -107,6 +107,18 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#substr" class="nav-link">substr()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#scan" class="nav-link">scan()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#case-statement" class="nav-link">CASE Statement</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -117,21 +129,80 @@
 <h1 id="nutzlicher-code">Nützlicher Code</h1>
 <hr />
 <p>Auch beim Arbeiten mit Abfragen und Anwendungsroutinen des SAS Enterprise Guide kommt man teilweise nicht ganz um die Verwendung von Code bzw. Funktionen herum. Oft ist es die einzige oder zumindest die beste Möglichkeit,
-auf einfache und schnelle Art und Weise neue Variablen zu generieren. Im Folgenden sind einige nützliche Funktionen und Statements zusammengetragen:</p>
+auf einfache und schnelle Art und Weise neue Variablen zu generieren. Im Folgenden sind einige nützliche Funktionen und Statements zusammengetragen. Sie können in einer Abfrage folgendermassen verwendet werden:  </p>
+<p>Neue berechnete Spalte hinzufügen <img alt="img" src="img/neue_spalte.png" /> -&gt; Erweiterter Ausdruck  </p>
 <h2 id="put">put()</h2>
 <p>Mit der put()-Funktion lässt sich eine numerische Variable mittels Format in eine Textvariable umwandeln.</p>
-<p><code>put(Variable, Format.)</code></p>
+<blockquote>
+<p>put(Variable, Format.)</p>
+</blockquote>
 <p>Anwendungsbeispiel:
-Die Personen in einem Datensatz sollen anhand ihres Alters verschiedenen Altersgruppen zugeordnet werden. Anschliessend soll die Anzahl Personen pro Altersgruppe und Geschlecht gezählt werden.<br />
-<img alt="" src="img/code1.png" /> </p>
+Die Personen in einem Datensatz sollen anhand ihres Alters verschiedenen Altersgruppen zugeordnet werden. Anschliessend soll die Anzahl Personen pro Altersgruppe und Geschlecht gezählt werden.  </p>
+<p><img alt="img" src="img/code1.png" /> </p>
 <p>Problem: Es reicht nicht, der Variable <em>Alter</em> in der Abfrage einfach ein Format für die Altersgruppen zuzuweisen. Das Format bzw. die Altersgruppe ist zwar im Vordergrund sichtbar, die Variable enthält aber immer noch das exakte Alter. 
-Wird nun die Anzahl Personen nach Geschlecht und Alter gezählt, resultiert überall eine 1, auch wenn es bspw. drei Frauen in der Altersgruppe «20 bis 60» gäbe.<br />
-<img alt="" src="img/code2.png" /> <img alt="" src="img/code5.png" /> </p>
-<p>Ein möglicher Lösungsansatz ist es, die numerische Variable <em>Alter</em> in eine Textvariable <em>Altersgruppe</em> umzuwandeln:<br />
-«Neue berechnete Spalte hinzufügen <img alt="" src="img/neue_spalte.png" /> -&gt; Erweiterter Ausdruck -&gt; put(Alter, fmt_alter.)»<br />
-<img alt="" src="img/code3.png" /></p>
-<p>Anschliessend kann die Anzahl Personen nach der Variable <em>Geschlecht</em> und der neuen Variable <em>Altersgruppe</em> gezählt werden.<br />
-<img alt="" src="img/code4.png" />  </p></div>
+Wird nun die Anzahl Personen nach Geschlecht und Alter gezählt, resultiert überall eine 1, auch wenn es bspw. drei Frauen in der Altersgruppe «20 bis 60» gäbe.  </p>
+<p><img alt="img" src="img/code2.png" /> <img alt="" src="img/code5.png" /> </p>
+<p>Ein möglicher Lösungsansatz ist es, die numerische Variable <em>Alter</em> in eine Textvariable <em>Altersgruppe</em> umzuwandeln:  </p>
+<p><code>put(t1.Alter, fmt_alter.)</code></p>
+<p>Anschliessend kann die Anzahl Personen nach der Variable <em>Geschlecht</em> und der neuen Variable <em>Altersgruppe</em> gezählt werden.  </p>
+<p><img alt="img" src="img/code4.png" />  </p>
+<p>Hinweis: Dieses Problem kann auch mittels <a href="code.html#case-statement">CASE Statement</a> gelöst werden.</p>
+<h2 id="substr">substr()</h2>
+<p>Mit der substr()-Funktion lässt sich ein Teil eines Strings - ein Substring - extrahieren.</p>
+<blockquote>
+<p>substr(Variable, Startpunkt, Länge)</p>
+</blockquote>
+<p>Anwendungsbeispiel: Vom Vornamen der Personen im Datensatz soll jeweils der Anfangsbuchstabe extrahiert und in einer neuen Variable gespeichert werden. Dieser Substring beginnt beim ersten Buchstaben und ist ein Zeichen lang:  </p>
+<p><code>substr(t1.Name, 1, 1)</code></p>
+<p><img alt="img" src="img/code6.png" />  </p>
+<p>In einer weiteren Variable sollen die zwei letzten Buchstaben des Vornamens gespeichert werden. Dieser Substring beginnt beim zweitletzten Buchstaben und ist zwei Zeichen lang:  </p>
+<p><code>substr(t1.Name, length(t1.Name)-1, 2)</code>  </p>
+<p><img alt="img" src="img/code7.png" />  </p>
+<p>Schliesslich soll noch der restliche, mittlere Teil des Vornamens in einer separaten Variable gespeichert werden. Dieser Substring beginnt beim zweiten Buchstaben und enthält alle Zeichen ausser das erste und die letzten zwei, umfasst also «Gesamte Anzahl - 3» Zeichen:  </p>
+<p><code>substr(t1.Name, 2, length(t1.Name)-3)</code>  </p>
+<p><img alt="img" src="img/code8.png" />  </p>
+<h2 id="scan">scan()</h2>
+<p>Mit der scan()-Funktion lässt sich ein Wort aus einer Reihe von Wörtern extrahieren, welche mit bestimmten Trennzeichen abgetrennt sind.</p>
+<blockquote>
+<p>scan(Variable, ntes Wort [, Trennzeichen])</p>
+</blockquote>
+<p>Nach folgenden Trennzeichen wird automatisch gesucht: Leerzeichen ! $ % &amp; ( ) * + , – . / ; &lt; |</p>
+<p>Anwendungsbeispiel:
+In einem Datensatz ist zu jeder Person der komplette Name erfasst. Nachname und Vorname sind dabei mit Komma abgetrennt.   </p>
+<p><img alt="img" src="img/code9.png" />  </p>
+<p>Nun sollen zwei neue Variablen erstellt werden, welche den Vornamen und den Nachnamen enthalten:  </p>
+<p><code>scan(t1.Name, 2)
+scan(t1.Name, 1)</code> </p>
+<p><img alt="img" src="img/code10.png" />  </p>
+<p>Problem: Wenn ein Doppelname enthalten ist, funktioniert dieser Code nicht, da der Bindestrich automatisch als Trennzeichen erkennt wird. </p>
+<p><img alt="img" src="img/code11.png" />  </p>
+<p>In diesem Fall muss der Funktion explizit mitgegeben werden, welches Trennzeichen verwendet werden soll:  </p>
+<p><code>scan(t1.Name, 2, ",")
+scan(t1.Name, 1, ",")</code>  </p>
+<p><img alt="img" src="img/code12.png" /></p>
+<h2 id="case-statement">CASE Statement</h2>
+<p>Mit einem CASE Statement kann eine neue Variable generiert werden, deren Ausprägungen von der erfüllten Bedingung abhängig sind.  </p>
+<blockquote>
+<p>CASE<br />
+&nbsp;&nbsp;&nbsp;WHEN Bedingung1 THEN Resultat1<br />
+&nbsp;&nbsp;&nbsp;WHEN Bedingung2 THEN Resultat2<br />
+&nbsp;&nbsp;&nbsp;WHEN BedingungN THEN ResultatN<br />
+&nbsp;&nbsp;&nbsp;ELSE Resultat<br />
+END;</p>
+</blockquote>
+<p>Anwendungsbeispiel:
+Die Personen in einem Datensatz sollen anhand ihres Alters verschiedenen Altersgruppen zugeordnet werden. Anschliessend soll die Anzahl Personen pro Altersgruppe und Geschlecht gezählt werden.</p>
+<p><img alt="img" src="img/code1.png" /></p>
+<p>Dazu wird zuerst mittels CASE-Statement eine neue Variable <em>Altersgruppe</em> generiert:  </p>
+<p><code>CASE
+   WHEN t1.Alter BETWEEN 0 AND 19 THEN "Bis 20 Jahre"
+   WHEN t1.Alter BETWEEN 20 AND 60 THEN "20 bis 60 Jahre"
+   WHEN t1. Alter &gt; 60 THEN "Über 60 Jahre"
+END</code>  </p>
+<p><img alt="img" src="img/code13.png" />  </p>
+<p>Anschliessend kann die Anzahl Personen nach der Variable Geschlecht und der neuen Variable Altersgruppe gezählt werden.  </p>
+<p><img alt="img" src="img/code4.png" /> </p>
+<p>Hinweis: Dieses Problem kann auch mittels <a href="code.html#put">put()-Funktion</a> gelöst werden.</p></div>
             </div>
         </div>
 
