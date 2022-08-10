@@ -158,7 +158,7 @@ ods excel close;</code></p>
 </ul>
 <p>Anwendungsbeispiel 2: Eine leicht modifizierte Form - ODS CSV - findet bei der Produktion von tsv-Files für die interaktiven Indikatoren Anwendung.  </p>
 <p><code>ods csv file = "&lt;Pfad&gt;\9999.tsv" encoding='utf-8' options(delimiter="09"x);
-   proc print data=personen_tsv;
+   proc print data=personen;
       var Name Geschlecht Alter;
    run;
 ods csv close;</code></p>
