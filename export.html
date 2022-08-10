@@ -145,7 +145,7 @@ ods csv close;</p>
    file="&lt;Pfad&gt;/SAS-Export T99_9_99.xlsx"  
    options(embedded_titles='yes' sheet_interval='bygroup' sheet_name='#byval1');  
 title "Anzahl Personen nach Altersgruppe";
-   proc report data=personen;
+   proc tabulate data=personen;
       by Jahr;
       [hier kommt Code]
    run;  
@@ -155,16 +155,18 @@ ods excel close;</code></p>
 <li><code>embedded_titles='yes'</code> bzw. <code>title</code>: Für die exportierte(n) Tabelle(n) kann ein Titel festgelegt werden. Dasselbe funktioniert auch mit Fussnoten (<code>embedded_footnotes='yes'</code> bzw. <code>footnote</code>).</li>
 <li><code>sheet_interval='bygroup'</code>: Für jede Ausprägung der by-Variable wird ein neues Tabellenblatt angelegt, in diesem Beispiel also für jedes Jahr.</li>
 <li><code>sheet_name='#byval1'</code>: Die Tabellenblätter werden entsprechend der Ausprägungen der by-Variable benannt, in diesem Beispiel also <em>«2021»</em>, <em>«2020»</em>, <em>«2019»</em>, etc.  </li>
+<li><code>proc tabulate</code>: Hier kann bspw. der Code einer Zusammenfassungstabelle eingefügt werden: Doppelklick auf Symbol der Zusammenfassungstabelle -&gt; Code -&gt; Kopieren von «PROC TABULATE» bis «RUN;».  </li>
 </ul>
 <p>Anwendungsbeispiel 2: Eine leicht modifizierte Form - ODS CSV - findet bei der Produktion von tsv-Files für die interaktiven Indikatoren Anwendung.  </p>
 <p><code>ods csv file = "&lt;Pfad&gt;\9999.tsv" encoding='utf-8' options(delimiter="09"x);
-   proc print data=personen;
-      var Name Geschlecht Alter;
+   proc tabulate data=personen;
+      [hier kommt Code]
    run;
 ods csv close;</code></p>
 <ul>
 <li><code>encoding='utf-8'</code>: Sorgt u.&nbsp;a. dafür, dass die Umlaute richtig dargestellt werden.</li>
 <li><code>delimiter="09"x</code>: Erzeugt ein Tabulator-getrenntes Dokument.  </li>
+<li><code>proc tabulate</code>: Hier kann bspw. der Code einer Zusammenfassungstabelle eingefügt werden: Doppelklick auf Symbol der Zusammenfassungstabelle -&gt; Code -&gt; Kopieren von «PROC TABULATE» bis «RUN;».</li>
 </ul>
 <p>Es gibt zahlreiche weitere Möglichkeiten, den Output von ODS Excel zu steuern bzw. anzupassen. Für eine vollständige Übersicht siehe <a href="https://documentation.sas.com/doc/en/pgmsascdc/9.4_3.5/odsug/p09n5pw9ol0897n1qe04zeur27rv.htm">hier</a>.</p>
 <p>Weitere Informationen zu ODS Excel finden sich auch auf der Seite zur <a href="http://127.0.0.1:8000/server.html#export-mit-ods-excel">Server-Migration</a>.</p></div>
