@@ -119,6 +119,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#auswahl-und-filter" class="nav-link">Auswahl und Filter</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#export-mittels-data-step" class="nav-link">Export mittels Data Step</a>
               <ul class="nav flex-column">
               </ul>
@@ -172,6 +176,12 @@ run;</p>
 by alter;<br />
 run;</p>
 </blockquote>
+<h2 id="auswahl-und-filter">Auswahl und Filter</h2>
+<p>Aus jeder Abfrage resultierte ein neuer Datensatz, der im WORK-Verzeichnis gespeichert wird. Je kleiner dieser ist, desto schneller läuft die Abfrage durch und desto weniger Speicher wird im WORK-Verzeichnis in Anspruch genommen. Deshalb sind folgende zwei Grundsätze wichtig:  </p>
+<ul>
+<li>Auswahl der Variablen: So früh wie möglich nur noch mit den relevanten Variablen arbeiten. Am besten bereits bei der ersten Abfrage die unnötigen Variablen weglassen.   </li>
+<li>Filter setzen: So früh wie möglich filtern. Wenn für eine Auswertung nur eine bestimmte Personengruppe benötigt wird, sollte am besten gleich in der ersten Abfrage nach dieser gefiltert werden.  </li>
+</ul>
 <h2 id="export-mittels-data-step">Export mittels Data Step</h2>
 <p>Um einen Datensatz aus SAS in ein externes File zu exportieren, wird oft ODS und ein Proc Print-Statement verwendet. Ist der Datensatz allerdings sehr gross, dann kann das extrem lange dauern. In diesem Fall bietet sich unter Umständen ein Export mittels Data Step und PUT-Statement an:</p>
 <blockquote>
