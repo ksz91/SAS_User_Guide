@@ -111,6 +111,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#export-mittels-data-step-und-put" class="nav-link">Export mittels Data Step und PUT</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -126,7 +130,22 @@
 Optionen -&gt; Optionen für diese Abfrage -&gt; Ergebnisse
 <img alt="" src="img/big1.png" /> </p>
 <p>Im Feld <code>Optionen:</code> kann SQL-Code eingegeben werden. In diesem Fall <code>compress=yes</code>. Dies führt dazu, dass der Output der Abfrage komprimiert wird und weniger Speicherplatz auf dem SAS-Server in Anspruch nimmt. Zudem sollte die Abfrage so auch schneller durchlaufen.
-<img alt="" src="img/big2.png" />   </p></div>
+<img alt="" src="img/big2.png" />   </p>
+<h2 id="export-mittels-data-step-und-put">Export mittels Data Step und PUT</h2>
+<p>Um einen Datensatz aus SAS in ein externes File zu exportieren, wird oft ODS und ein Proc Print Statement verwendet. Ist der Datensatz allerdings sehr gross, dann kann das extrem lange dauern. In diesem Fall bietet sich ein Export mittels Data Step und PUT Statement an:</p>
+<blockquote>
+<p>data _null_;<br />
+set table1; <br />
+file="&lt;&thinsp;Pfad&thinsp;&gt;\Dateiname.csv" encoding="UTF-8" dlm=";";<br />
+if _n_=1 then put "Name;Geschlecht;Merkmal;Wert";<br />
+put Name Geschlecht Merkmal Wert;<br />
+run;</p>
+</blockquote>
+<ul>
+<li><code>dlm</code>: Bestimmt das Trennzeichen zwischen den Datenreihen, in diesem Fall ein Semikolon.</li>
+<li><code>if _n_=1</code>: Der Nachteil dieser Methode ist, dass die Spaltennamen nicht exportiert werden, sondern nur die Daten. Deshalb muss die erste Zeile mit den Spaltennamen manuell hinzugefügt werden. Wichtig ist es, die Spaltennamen mit dem korrekten Trennzeichen getrennt aneinanderzuhängen und in Anführungszeichen zu setzen.</li>
+<li><code>put</code>: Hier werden alle Variablen erfasst, die exportiert werden sollen.</li>
+</ul></div>
             </div>
         </div>
 
