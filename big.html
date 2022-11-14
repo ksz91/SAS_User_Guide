@@ -107,11 +107,19 @@
             
             <li class="nav-item" data-level="1"><a href="#umgang-mit-grossen-datenmengen" class="nav-link">Umgang mit grossen Datenmengen</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#komprimierter-output" class="nav-link">Komprimierter Output</a>
+            <li class="nav-item" data-level="2"><a href="#output-komprimieren" class="nav-link">Output komprimieren</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#export-mittels-data-step-und-put" class="nav-link">Export mittels Data Step und PUT</a>
+            <li class="nav-item" data-level="2"><a href="#loschen-mit-proc-datasets" class="nav-link">Löschen mit PROC DATASETS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#effiziente-sortierung" class="nav-link">Effiziente Sortierung</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#export-mittels-data-step" class="nav-link">Export mittels Data Step</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -125,14 +133,46 @@
 <h1 id="umgang-mit-grossen-datenmengen">Umgang mit grossen Datenmengen</h1>
 <hr />
 <p>Bei der Arbeit mit sehr grossen Datenmengen kann es zu Ressourcen- bzw. Speicherproblemen kommen. Um dem entgegenzuwirken gibt es einige einfache Möglichkeiten.</p>
-<h2 id="komprimierter-output">Komprimierter Output</h2>
+<h2 id="output-komprimieren">Output komprimieren</h2>
 <p>Abfragen im SAS Enterprise Guide können um diverse Optionen ergänzt werden:<br />
 Optionen -&gt; Optionen für diese Abfrage -&gt; Ergebnisse
 <img alt="" src="img/big1.png" /> </p>
 <p>Im Feld <code>Optionen:</code> kann SQL-Code eingegeben werden. In diesem Fall <code>compress=yes</code>. Dies führt dazu, dass der Output der Abfrage komprimiert wird und weniger Speicherplatz auf dem SAS-Server in Anspruch nimmt. Zudem sollte die Abfrage so auch schneller durchlaufen.
-<img alt="" src="img/big2.png" />   </p>
-<h2 id="export-mittels-data-step-und-put">Export mittels Data Step und PUT</h2>
-<p>Um einen Datensatz aus SAS in ein externes File zu exportieren, wird oft ODS und ein Proc Print Statement verwendet. Ist der Datensatz allerdings sehr gross, dann kann das extrem lange dauern. In diesem Fall bietet sich ein Export mittels Data Step und PUT Statement an:</p>
+<img alt="" src="img/big2.png" />  </p>
+<h2 id="loschen-mit-proc-datasets">Löschen mit PROC DATASETS</h2>
+<p>Nicht mehr benötigte Datensätze brauchen unnötig Speicherplatz im WORK-Verzeichnis und sollten deshalb gelöscht werden. Zum Beispiel: Wenn mehrere Datensätze durch einen Merge zu einem neuen Datensatz zusammengefügt werden, können nach dem Merge die ursprünglichen Datensätze gelöscht werden.</p>
+<blockquote>
+<p>proc datasets lib=work;<br />
+delete dataset1 dataset2 dataset3;<br />
+run;</p>
+</blockquote>
+<p>Dieser Ansatz ist eher für SAS-Projekte mit Programmierung geeignet, kann aber theoretisch auch mit vordefinierten Abfragen und Anwendungsroutinen des SAS Enterprise Guide kombiniert werden. Dazu einfach den Code in ein Programm schreiben, rechter Mausklick auf den zu löschenden Datensatz und «Verknüpfen mit» und das Programm mit dem Proc Datasets-Statement auswählen.</p>
+<p><img alt="" src="img/big3.png" /></p>
+<h2 id="effiziente-sortierung">Effiziente Sortierung</h2>
+<p>Das Sortieren von Datensätzen kann vor allem bei grossen Datensätzen sehr ressourcenintensiv sein. Es gibt zwei Ansätze um sowohl Zeit als auch Speicherplatz einzusparen.</p>
+<p>Das Proc Sort-Statement um die Option TAGSORT ergänzen:</p>
+<blockquote>
+<p>proc sort data=person <strong>tagsort</strong>;<br />
+by alter;<br />
+run; </p>
+</blockquote>
+<p>Wenn nur ein Subset eines Datensatzes sortiert werden soll, wird das oft in zwei Schritten gemacht:</p>
+<blockquote>
+<p>data person_f (where=(geschlecht="F"));<br />
+set person;<br />
+run;  </p>
+<p>proc sort data=person_f out=person_f_sorted;<br />
+by alter;<br />
+run;</p>
+</blockquote>
+<p>Ein Kombinieren dieser beiden Schritte spart sowohl Zeit als auch Speicherplatz:</p>
+<blockquote>
+<p>proc sort data=person (where=(geschlecht="F")) out=person_f_sorted;<br />
+by alter;<br />
+run;</p>
+</blockquote>
+<h2 id="export-mittels-data-step">Export mittels Data Step</h2>
+<p>Um einen Datensatz aus SAS in ein externes File zu exportieren, wird oft ODS und ein Proc Print-Statement verwendet. Ist der Datensatz allerdings sehr gross, dann kann das extrem lange dauern. In diesem Fall bietet sich unter Umständen ein Export mittels Data Step und PUT-Statement an:</p>
 <blockquote>
 <p>data _null_;<br />
 set table1; <br />
