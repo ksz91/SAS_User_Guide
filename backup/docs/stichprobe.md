@@ -1,3 +1,0 @@
-#Stichprobenanalyse 
---- 
-Inhalt folgt...

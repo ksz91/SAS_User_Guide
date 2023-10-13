@@ -1,0 +1,17 @@
+site_name: SAS User Guide
+nav:
+    - Übersicht: 'index.md'
+    - Daten weiterverarbeiten:
+        - 'Transponieren': 'transp.md'
+    - Daten exportieren: 'export.md'
+    - Spezialthemen:
+        - 'Server-Migration': 'server.md'
+        - 'Enterprise Guide 8.3': 'neweg.md'
+        - 'Grosse Datenmengen': 'big.md'
+        - 'Neue Rohdatenablage': 'rawdata.md'
+    - Nützlicher Code: 'code.md'
+theme:
+    name: 'mkdocs'
+    navigation_depth: 3
+    //nav_style: dark
+extra_css: [css/extra.css]

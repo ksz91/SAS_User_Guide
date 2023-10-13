@@ -1,3 +1,0 @@
-# Abfrage erstellen
----
-Inhalt folgt...

@@ -1,3 +1,0 @@
-#Jahrbuchtabellen auf Knopfdruck 
---- 
-Inhalt folgt...

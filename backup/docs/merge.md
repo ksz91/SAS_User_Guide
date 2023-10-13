@@ -1,3 +1,0 @@
-# Datensätze zusammenführen 
---- 
-Inhalt folgt...
