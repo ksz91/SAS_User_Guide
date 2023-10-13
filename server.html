@@ -12,13 +12,10 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
         <link href="css/extra.css" rel="stylesheet">
-
-        <script src="js/jquery-1.10.2.min.js" defer></script>
-        <script src="js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
     </head>
 
     <body>
@@ -132,7 +129,7 @@
 <h2 id="libname-statements">Libname Statements</h2>
 <p>Libname Statements, die explizit den alten Servernamen verwenden, müssen angepasst werden:</p>
 <p>Bisher:<br />
-<code>libname name '\\pdprodsv09\data\DWH_Name' access=readonly;</code>  </p>
+<code>libname name '\\pdprodsv09\data\DWH_Name' access=readonly;</code></p>
 <p>Neu:<br />
 <code>libname name '\\pdstatasvpsas05\data\DWH_Name' access=readonly;</code></p>
 <p>Überall wo die Libname Statements via «filedsn» definiert sind, muss nichts angepasst werden:<br />
@@ -142,11 +139,12 @@
 <img alt="" src="img/server3.png" /><br />
 Bisher konnte das mit folgendem Code erreicht werden:<br />
 <img alt="" src="img/server2.png" /><br />
-Ein neuer Eintrag bei <code>sheet_name</code> im options-Statement erzeugte ein neues Tabellenblatt in Excel. Die Option <code>sheet_interval="none"</code> verhinderte, dass für jedes Proc Print-Statement ein neues Sheet generiert wird.  </p>
-<p>Das funktioniert nun nicht mehr so. Ein neuer Eintrag bei <code>sheet_name</code> generiert nicht mehr automatisch ein neues Tabellenblatt. Oben gezeigter Code generiert nun ein Excel-File mit nur einem Tabellenblatt «Sheet1», in dem der Output aller Proc Print-Statements untereinander geschrieben wird.  </p>
+Ein neuer Eintrag bei <code>sheet_name</code> im options-Statement erzeugte ein neues Tabellenblatt in Excel. Die Option <code>sheet_interval="none"</code> verhinderte, dass für jedes Proc Print-Statement ein neues Sheet generiert wird.</p>
+<p>Das funktioniert nun nicht mehr so. Ein neuer Eintrag bei <code>sheet_name</code> generiert nicht mehr automatisch ein neues Tabellenblatt. Oben gezeigter Code generiert nun ein Excel-File mit nur einem Tabellenblatt «Sheet1», in dem der Output aller Proc Print-Statements untereinander geschrieben wird.</p>
 <p>Neu ist folgender Code nötig:<br />
 <img alt="" src="img/server1.png" /><br />
-Immer wenn ein neues Tabellenblatt erzeugt werden soll, ist die Option <code>sheet_interval="now"</code> nötig.</p></div>
+Immer wenn ein neues Tabellenblatt erzeugt werden soll, ist die Option <code>sheet_interval="now"</code> nötig.</p>
+<hr /></div>
             </div>
         </div>
 
@@ -154,12 +152,14 @@ Immer wenn ein neues Tabellenblatt erzeugt werden soll, ist die Option <code>she
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
         <script>
             var base_url = ".",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="js/base.js" defer></script>
-        <script src="search/main.js" defer></script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

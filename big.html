@@ -12,13 +12,10 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
         <link href="css/extra.css" rel="stylesheet">
-
-        <script src="js/jquery-1.10.2.min.js" defer></script>
-        <script src="js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
     </head>
 
     <body>
@@ -143,10 +140,8 @@
 <p>Bei der Arbeit mit sehr grossen Datenmengen kann es zu Ressourcen- bzw. Speicherproblemen kommen. Um dem entgegenzuwirken gibt es einige einfache Möglichkeiten.</p>
 <h2 id="output-komprimieren">Output komprimieren</h2>
 <p>Abfragen im SAS Enterprise Guide können um diverse Optionen ergänzt werden:<br />
-Optionen -&gt; Optionen für diese Abfrage -&gt; Ergebnisse
-<img alt="" src="img/big1.png" /> </p>
-<p>Im Feld <code>Optionen:</code> kann SQL-Code eingegeben werden. In diesem Fall <code>compress=yes</code>. Dies führt dazu, dass der Output der Abfrage komprimiert wird und weniger Speicherplatz auf dem SAS-Server in Anspruch nimmt. Zudem sollte die Abfrage so auch schneller durchlaufen.
-<img alt="" src="img/big2.png" />  </p>
+Optionen -&gt; Optionen für diese Abfrage -&gt; Ergebnisse <img alt="" src="img/big1.png" /></p>
+<p>Im Feld <code>Optionen:</code> kann SQL-Code eingegeben werden. In diesem Fall <code>compress=yes</code>. Dies führt dazu, dass der Output der Abfrage komprimiert wird und weniger Speicherplatz auf dem SAS-Server in Anspruch nimmt. Zudem sollte die Abfrage so auch schneller durchlaufen. <img alt="" src="img/big2.png" /></p>
 <h2 id="loschen-mit-proc-datasets">Löschen mit PROC DATASETS</h2>
 <p>Nicht mehr benötigte Datensätze brauchen unnötig Speicherplatz im WORK-Verzeichnis und sollten deshalb gelöscht werden. Zum Beispiel: Wenn mehrere Datensätze durch einen Merge zu einem neuen Datensatz zusammengefügt werden, können nach dem Merge die ursprünglichen Datensätze gelöscht werden.</p>
 <blockquote>
@@ -163,13 +158,13 @@ run;</p>
 <blockquote>
 <p>proc sort data=person <strong>tagsort</strong>;<br />
 by alter;<br />
-run; </p>
+run;</p>
 </blockquote>
 <p>Wenn nur ein Subset eines Datensatzes sortiert werden soll, wird das oft in zwei Schritten gemacht:</p>
 <blockquote>
 <p>data person_f (where=(geschlecht="F"));<br />
 set person;<br />
-run;  </p>
+run;</p>
 <p>proc sort data=person_f out=person_f_sorted;<br />
 by alter;<br />
 run;</p>
@@ -181,17 +176,17 @@ by alter;<br />
 run;</p>
 </blockquote>
 <h2 id="auswahl-und-filter">Auswahl und Filter</h2>
-<p>Aus jeder Abfrage resultierte ein neuer Datensatz, der im WORK-Verzeichnis gespeichert wird. Je kleiner dieser ist, desto schneller läuft die Abfrage durch und desto weniger Speicher wird im WORK-Verzeichnis in Anspruch genommen. Deshalb sind folgende zwei Grundsätze wichtig:  </p>
+<p>Aus jeder Abfrage resultierte ein neuer Datensatz, der im WORK-Verzeichnis gespeichert wird. Je kleiner dieser ist, desto schneller läuft die Abfrage durch und desto weniger Speicher wird im WORK-Verzeichnis in Anspruch genommen. Deshalb sind folgende zwei Grundsätze wichtig:</p>
 <ul>
-<li>Auswahl der Variablen: So früh wie möglich nur noch mit den relevanten Variablen arbeiten. Am besten bereits bei der ersten Abfrage die unnötigen Variablen weglassen.   </li>
-<li>Filter setzen: So früh wie möglich filtern. Wenn für eine Auswertung nur eine bestimmte Personengruppe benötigt wird, sollte am besten gleich in der ersten Abfrage nach dieser gefiltert werden.  </li>
+<li>Auswahl der Variablen: So früh wie möglich nur noch mit den relevanten Variablen arbeiten. Am besten bereits bei der ersten Abfrage die unnötigen Variablen weglassen.</li>
+<li>Filter setzen: So früh wie möglich filtern. Wenn für eine Auswertung nur eine bestimmte Personengruppe benötigt wird, sollte am besten gleich in der ersten Abfrage nach dieser gefiltert werden.</li>
 </ul>
 <h2 id="export-mittels-data-step">Export mittels Data Step</h2>
 <p>Um einen Datensatz aus SAS in ein externes File zu exportieren, wird oft ODS und ein Proc Print-Statement verwendet. Ist der Datensatz allerdings sehr gross, dann kann das extrem lange dauern. In diesem Fall bietet sich unter Umständen ein Export mittels Data Step und PUT-Statement an:</p>
 <blockquote>
 <p>data _null_;<br />
-set table1; <br />
-file="&lt;&thinsp;Pfad&thinsp;&gt;\Dateiname.csv" encoding="UTF-8" dlm=";";<br />
+set table1;<br />
+file="&lt; Pfad &gt;\Dateiname.csv" encoding="UTF-8" dlm=";";<br />
 if _n_=1 then put "Name;Geschlecht;Merkmal;Wert";<br />
 put Name Geschlecht Merkmal Wert;<br />
 run;</p>
@@ -200,7 +195,8 @@ run;</p>
 <li><code>dlm</code>: Bestimmt das Trennzeichen zwischen den Datenreihen, in diesem Fall ein Semikolon.</li>
 <li><code>if _n_=1</code>: Der Nachteil dieser Methode ist, dass die Spaltennamen nicht exportiert werden, sondern nur die Daten. Deshalb muss die erste Zeile mit den Spaltennamen manuell hinzugefügt werden. Wichtig ist es, die Spaltennamen mit dem korrekten Trennzeichen aneinanderzuhängen und in Anführungszeichen zu setzen.</li>
 <li><code>put</code>: Hier werden alle Variablen erfasst, die exportiert werden sollen.</li>
-</ul></div>
+</ul>
+<hr /></div>
             </div>
         </div>
 
@@ -208,12 +204,14 @@ run;</p>
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
         <script>
             var base_url = ".",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="js/base.js" defer></script>
-        <script src="search/main.js" defer></script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

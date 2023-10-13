@@ -12,13 +12,10 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
         <link href="css/extra.css" rel="stylesheet">
-
-        <script src="js/jquery-1.10.2.min.js" defer></script>
-        <script src="js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
     </head>
 
     <body>
@@ -128,47 +125,45 @@
 
 <h1 id="transponieren">Transponieren</h1>
 <hr />
-<p>Die Anwendungsroutine «Transponieren» ermöglicht es, die Struktur eines Datensatzes zu ändern. Der Datensatz kann entweder vertikal oder horizontal strukturiert sein.  </p>
+<p>Die Anwendungsroutine «Transponieren» ermöglicht es, die Struktur eines Datensatzes zu ändern. Der Datensatz kann entweder vertikal oder horizontal strukturiert sein.</p>
 <p>Beispiel: Ein Datensatz enthält für jede Person drei numerische Variablen - das Alter, die Grösse und das Gewicht.</p>
 <ul>
 <li>In der <em>vertikalen</em> Form sind die Werte für Alter, Grösse und Gewicht alle untereinander, also in einer Variable, erfasst. Für jede Person im Datensatz sind also drei Beobachtungen vorhanden.<br />
 <img alt="" src="img/Transp_1.png" /></li>
-<li>In der <em>horizontalen</em> Form sind die Werte auf drei verschiedene Variablen aufgeteilt, folglich existiert nur eine Beobachtung pro Person. <br />
+<li>In der <em>horizontalen</em> Form sind die Werte auf drei verschiedene Variablen aufgeteilt, folglich existiert nur eine Beobachtung pro Person.<br />
 <img alt="" src="img/Transp_2.png" /></li>
 </ul>
 <h2 id="horizontalisierung">Horizontalisierung</h2>
 <p>Liegen die Daten in der vertikalen Form vor, werden aber für die Weiterverarbeitung in der horizontalen Form gebraucht, so kann das mittels «Transponieren» erreicht werden.<br />
 <img alt="" src="img/Transp_1.png" /><br />
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&darr;</strong></span><br />
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&darr;</strong></span><br/> 
 <img alt="" src="img/Transp_3.png" /></p>
 <h4 id="losungsweg-sas-enterprise-guide">Lösungsweg SAS Enterprise Guide</h4>
-<p><em>Schritt 1</em>: Anwendungsroutine «Transponieren» auswählen. Wo diese im neuen SAS Enterprise Guide zu finden ist, kann <a href="neweg.html">hier</a> nachgelesen werden. 
-<img alt="" src="img/Transp_4.png" />  </p>
+<p><em>Schritt 1</em>: Anwendungsroutine «Transponieren» auswählen. Wo diese im neuen SAS Enterprise Guide zu finden ist, kann <a href="neweg.html">hier</a> nachgelesen werden. <img alt="" src="img/Transp_4.png" /></p>
 <p><em>Schritt 2</em>: Die Variablen den richtigen Rollen zuordnen:</p>
 <ul>
-<li><code>Variable transponieren</code>: Hier muss die Analysevariable ausgewählt werden, deren Werte auf verschiedene Spalten aufgeteilt werden sollen. In diesem Beispiel also <em>Wert</em>.  </li>
-<li><code>Neue Spaltennamen (Maximal: 1)</code>: Hier wird die Variable ausgewählt, deren Ausprägungen die neuen Variablen bilden bzw. benennen sollen. In diesem Beispiel also <em>Merkmal</em>.  </li>
-<li><code>Analyse gruppieren nach</code>: In diesem Beispiel die Variablen <em>Name</em> und <em>Geschlecht</em>. Hier können auch noch mehr Variablen gewählt werden, z.B. wenn der Wert nicht nur nach Name und Geschlecht, sondern z.B. auch noch nach Nationalität ausgewiesen wird.  </li>
+<li><code>Variable transponieren</code>: Hier muss die Analysevariable ausgewählt werden, deren Werte auf verschiedene Spalten aufgeteilt werden sollen. In diesem Beispiel also <em>Wert</em>.</li>
+<li><code>Neue Spaltennamen (Maximal: 1)</code>: Hier wird die Variable ausgewählt, deren Ausprägungen die neuen Variablen bilden bzw. benennen sollen. In diesem Beispiel also <em>Merkmal</em>.</li>
+<li><code>Analyse gruppieren nach</code>: In diesem Beispiel die Variablen <em>Name</em> und <em>Geschlecht</em>. Hier können auch noch mehr Variablen gewählt werden, z.B. wenn der Wert nicht nur nach Name und Geschlecht, sondern z.B. auch noch nach Nationalität ausgewiesen wird.</li>
 </ul>
 <p><img alt="" src="img/Transp_5.png" /><br />
 <em>Schritt 3</em>: Das Häkchen bei «Präfix verwenden» rausnehmen, damit die neuen Spaltennamen nicht mit dem Wort «Spalte» (Default) ergänzt werden.<br />
-<img alt="" src="img/Transp_6.png" />  </p>
+<img alt="" src="img/Transp_6.png" /></p>
 <h2 id="vertikalisierung">Vertikalisierung</h2>
 <p>Liegen die Daten in der horizontalen Form vor, werden aber für die Weiterverarbeitung in der vertikalen Form gebraucht, so kann das ebenfalls mittels «Transponieren» erreicht werden.<br />
 <img alt="" src="img/Transp_2.png" /><br />
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&darr;</strong></span><br />
-<img alt="" src="img/Transp_1_1.png" />  </p>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&darr;</strong></span><br/> 
+<img alt="" src="img/Transp_1_1.png" /></p>
 <h4 id="losungsweg-sas-enterprise-guide_1">Lösungsweg SAS Enterprise Guide</h4>
-<p><em>Schritt 1</em>: Anwendungsroutine «Transponieren» auswählen.
-<img alt="" src="img/Transp_4.png" />  </p>
-<p><em>Schritt 2</em>: Die Variablen den richtigen Rollen zuordnen:  </p>
+<p><em>Schritt 1</em>: Anwendungsroutine «Transponieren» auswählen. <img alt="" src="img/Transp_4.png" /></p>
+<p><em>Schritt 2</em>: Die Variablen den richtigen Rollen zuordnen:</p>
 <ul>
-<li><code>Variable transponieren</code>: Hier müssen die Analysevariablen ausgewählt werden, deren Werte in einer Spalte zusammengefasst werden sollen. In diesem Beispiel also <em>Alter</em>, <em>Grösse</em> und <em>Gewicht</em>.  </li>
+<li><code>Variable transponieren</code>: Hier müssen die Analysevariablen ausgewählt werden, deren Werte in einer Spalte zusammengefasst werden sollen. In diesem Beispiel also <em>Alter</em>, <em>Grösse</em> und <em>Gewicht</em>.</li>
 <li><code>Analyse gruppieren nach</code>: In diesem Beispiel die Variablen <em>Name</em> und <em>Geschlecht</em>. Hier können auch noch mehr Variablen gewählt werden, z.B. wenn der Wert nicht nur nach Name und Geschlecht, sondern z.B. auch noch nach Nationalität ausgewiesen würde.<br />
 <img alt="" src="img/Transp_8.png" /><br />
-<em>Schritt 3</em>: Namen für Quellspalte setzen, in diesem Fall soll sie <em>Merkmal</em> heissen.
-<img alt="" src="img/Transp_9.png" />  </li>
-</ul></div>
+<em>Schritt 3</em>: Namen für Quellspalte setzen, in diesem Fall soll sie <em>Merkmal</em> heissen. <img alt="" src="img/Transp_9.png" /></li>
+</ul>
+<hr /></div>
             </div>
         </div>
 
@@ -176,12 +171,14 @@
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
         <script>
             var base_url = ".",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="js/base.js" defer></script>
-        <script src="search/main.js" defer></script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
