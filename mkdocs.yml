@@ -2,6 +2,7 @@ site_name: SAS User Guide
 nav:
     - Übersicht: 'index.md'
     - Daten weiterverarbeiten:
+        - 'Benutzerdefinierte Formate': 'formate.md'
         - 'Transponieren': 'transp.md'
     - Daten exportieren: 'export.md'
     - Spezialthemen:

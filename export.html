@@ -4,11 +4,11 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="None">
+        
         
         
         <link rel="shortcut icon" href="img/favicon.ico">
-        <title>SAS User Guide</title>
+        <title>Daten exportieren - SAS User Guide</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
@@ -18,7 +18,7 @@
         <script>hljs.highlightAll();</script> 
     </head>
 
-    <body class="homepage">
+    <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
                 <a class="navbar-brand" href="index.html">SAS User Guide</a>
@@ -31,7 +31,7 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem active">
+                            <li class="navitem">
                                 <a href="index.html" class="nav-link">Übersicht</a>
                             </li>
                             <li class="dropdown">
@@ -43,7 +43,7 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="navitem">
+                            <li class="navitem active">
                                 <a href="export.html" class="nav-link">Daten exportieren</a>
                             </li>
                             <li class="dropdown">
@@ -79,12 +79,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" class="nav-link disabled">
+                                <a rel="prev" href="transp.html" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="transp.html" class="nav-link">
+                                <a rel="next" href="server.html" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -106,8 +106,16 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#ubersicht" class="nav-link">Übersicht</a>
+            <li class="nav-item" data-level="1"><a href="#daten-exportieren" class="nav-link">Daten exportieren</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#an-microsoft-excel-senden" class="nav-link">An Microsoft Excel senden</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#ods-excel" class="nav-link">ODS Excel</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -115,110 +123,59 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="ubersicht">Übersicht</h1>
+<h1 id="daten-exportieren">Daten exportieren</h1>
 <hr />
-<div class="jumbotron">
-<div class="row mb-3">
-  <div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="transp.html">Transponieren</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>Horizontalisierung</li>
-            <li>Vertikalisierung</li> <br> 
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="export.html" style="color:#00AA9E;">Daten exportieren</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>An Microsoft Excel senden</li>
-            <li>ODS Excel</li><br>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="code.html" style="color:#DC440E;">Nützlicher Code</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>put(), substr(), scan()</li>
-            <li>CASE Statement</li><br>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-  </div>
-<div class="row mb-3">
-<div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="neweg.html" style="color:#923F8D;">SAS Enterprise Guide 8.3</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>Anwendungsroutinen</li>
-        <li>Backup-Intervall</li> 
-            <li>Navigation und Ansicht</li>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="server.html" style="color:#923F8D;">Server-Migration</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>Libname Statements</li>
-            <li>Export mit ODS Excel</li><br>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-    <div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="big.html" style="color:#923F8D;">Grosse Datenmengen</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>Komprimieren und Löschen</li>
-            <li>Effiziente Sortierung</li>
-            <li>Export mittels Data Step</li>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-    </div>
-    <div class="row mb-3">
-<div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="rawdata.html" style="color:#923F8D;">Neue Rohdatenablage</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>Einlesen mit PROC IMPORT</li>
-              <li>Routine «Daten importieren»</li> <br>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div></div>
+<h2 id="an-microsoft-excel-senden">An Microsoft Excel senden</h2>
+<p>Der Output einer Anwendungsroutine (bspw. Zusammenfassungstabelle) kann folgendermassen in Excel exportiert werden:<br />
+<img alt="" src="img/export1.png" /></p>
+<p>Problem: Ist im Enterprise Guide unter «Extras -&gt; Optionen -&gt; Ergebnisse -&gt; Allgemein» das Ergebnisformat HTML ausgewählt, dann wird der entsprechende Output mit einem Punkt als Dezimaltrennzeichen exportiert. In Excel kann damit dann nicht weitergerechnet werden und im schlimmsten Fall wird die Zahl sogar als Datum erkannt.<br />
+<img alt="" src="img/export2.png" /></p>
+<p>Es gibt mehrere Möglichkeiten, dieses Problem zu umgehen:</p>
+<ul>
+<li>Als Ergebnisformat «SAS Report» anstatt «HTML» auswählen. Wird der Output eines SAS Reports mittels «An Microsoft Excel senden» exportiert, werden die Dezimaltrennzeichen korrekt angezeigt.</li>
+<li>Als Ergebnisformat zusätzlich «Excel» auswählen. So wird beim Ausführen der Anwendungsroutine direkt ein Excel-File generiert, das direkt aus SAS mittels Doppelklick geöffnet werden kann.</li>
+<li>Für die numerische Variable das Format <code>NUMXw.d</code> auswählen. Bei einer Zusammenfassungstabelle wird das folgendermassen gemacht: Rechtsklick auf die Statistik (bspw. Sum) -&gt; Datenwerteigenschaften -&gt; Ausgabeformat -&gt; Numerisch -&gt; NUMXw.d. <img alt="" src="img/export3.png" /></li>
+<li>Zum Exportieren entweder <a href="https://ksz91.github.io/SAS_User_Guide/export.html#ods-excel">ODS Excel</a> oder Proc Export (Eintrag dazu folgt) verwenden.</li>
+</ul>
+<h2 id="ods-excel">ODS Excel</h2>
+<p>ODS Excel bietet die Möglichkeit, den Output von SAS-Prozeduren (bspw. Proc Report, Proc Tabulate oder Proc Print) direkt in ein Excel-File zu schreiben.</p>
+<blockquote>
+<p>ods excel file="&lt; Pfad &gt;\Dateiname.xlsx" [diverse Optionen];<br />
+   [proc print, proc report, proc tabulate, o.ä.]<br />
+ods csv close;</p>
+</blockquote>
+<p>Anwendungsbeispiel 1: Mit ODS Excel lässt sich die Struktur einer Webtabelle nachbilden, sodass der generierte Export nur noch mittels Copy-Paste in die Webtabelle eingefügt werden muss.</p>
+<p><code>ods excel style=journal 
+    file="&lt;Pfad&gt;/SAS-Export T99_9_99.xlsx" 
+    options(embedded_titles='yes' sheet_interval='bygroup' sheet_name='#byval1'); 
+title "Anzahl Personen nach Altersgruppe"; 
+    proc tabulate data=personen; 
+        by Jahr; 
+        [hier kommt Code] 
+    run; 
+ods excel close;</code></p>
+<ul>
+<li><code>style=journal</code>: Bestimmt das Design, in dem der Excel-Export daherkommt. Für eine Übersicht über alle ODS-Styles siehe <a href="https://documentation.sas.com/doc/en/pgmsascdc/9.4_3.3/statug/statug_odsgraph_sect054.htm">hier</a>.</li>
+<li><code>embedded_titles='yes'</code> bzw. <code>title</code>: Für die exportierte(n) Tabelle(n) kann ein Titel festgelegt werden. Dasselbe funktioniert auch mit Fussnoten (<code>embedded_footnotes='yes'</code> bzw. <code>footnote</code>).</li>
+<li><code>sheet_interval='bygroup'</code>: Für jede Ausprägung der by-Variable wird ein neues Tabellenblatt angelegt, in diesem Beispiel also für jedes Jahr.</li>
+<li><code>sheet_name='#byval1'</code>: Die Tabellenblätter werden entsprechend der Ausprägungen der by-Variable benannt, in diesem Beispiel also <em>«2021»</em>, <em>«2020»</em>, <em>«2019»</em>, etc.</li>
+<li><code>proc tabulate</code>: Hier kann bspw. der Code einer Zusammenfassungstabelle eingefügt werden: Doppelklick auf Symbol der Zusammenfassungstabelle -&gt; Code -&gt; Kopieren von «PROC TABULATE» bis «RUN;».</li>
+</ul>
+<p>Anwendungsbeispiel 2: Eine leicht modifizierte Form - ODS CSV - findet bei der Produktion von tsv-Files für die interaktiven Indikatoren Anwendung.</p>
+<p><code>ods csv file = "&lt;Pfad&gt;\9999.tsv" encoding='utf-8' options(delimiter="09"x); 
+    proc tabulate data=personen; 
+        [hier kommt Code] 
+    run; 
+ods csv close;</code></p>
+<ul>
+<li><code>encoding='utf-8'</code>: Sorgt u. a. dafür, dass die Umlaute richtig dargestellt werden.</li>
+<li><code>delimiter="09"x</code>: Erzeugt ein Tabulator-getrenntes Dokument.</li>
+<li><code>proc tabulate</code>: Hier kann bspw. der Code einer Zusammenfassungstabelle eingefügt werden: Doppelklick auf Symbol der Zusammenfassungstabelle -&gt; Code -&gt; Kopieren von «PROC TABULATE» bis «RUN;».</li>
+</ul>
+<p>Es gibt zahlreiche weitere Möglichkeiten, den Output von ODS Excel zu steuern bzw. anzupassen. Für eine vollständige Übersicht siehe <a href="https://documentation.sas.com/doc/en/pgmsascdc/9.4_3.5/odsug/p09n5pw9ol0897n1qe04zeur27rv.htm">hier</a>.</p>
+<p>Weitere Informationen zu ODS Excel finden sich auch auf der Seite zur <a href="https://ksz91.github.io/SAS_User_Guide/server.html#export-mit-ods-excel">Server-Migration</a>.</p>
+<p>Wenn der Export mit ODS Excel sehr lange dauert, ist unter Umständen ein <a href="big.html#export-mittels-data-step">Export mittels Data Step und PUT-Statement</a> eine Option.</p>
+<hr /></div>
             </div>
         </div>
 
@@ -298,8 +255,3 @@
 
     </body>
 </html>
-
-<!--
-MkDocs version : 1.5.3
-Build Date UTC : 2023-10-13 14:40:06.514268+00:00
--->
