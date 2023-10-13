@@ -108,7 +108,11 @@ Anwendungsbeispiel: Die Personen in einem Datensatz sollen anhand ihres Alters v
 
 Dazu wird zuerst mittels CASE-Statement eine neue Variable _Altersgruppe_ generiert:
 
-`CASE WHEN t1.Alter BETWEEN 0 AND 19 THEN "Bis 20 Jahre" WHEN t1.Alter BETWEEN 20 AND 60 THEN "20 bis 60 Jahre" WHEN t1.Alter > 60 THEN "Über 60 Jahre" END`
+`CASE 
+	WHEN t1.Alter BETWEEN 0 AND 19 THEN "Bis 20 Jahre" 
+	WHEN t1.Alter BETWEEN 20 AND 60 THEN "20 bis 60 Jahre" 
+	WHEN t1.Alter > 60 THEN "Über 60 Jahre" 
+END`
 
 ![img](img/code13.png)
 

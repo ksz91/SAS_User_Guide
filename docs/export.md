@@ -30,7 +30,15 @@ ODS Excel bietet die Möglichkeit, den Output von SAS-Prozeduren (bspw. Proc Rep
 
 Anwendungsbeispiel 1: Mit ODS Excel lässt sich die Struktur einer Webtabelle nachbilden, sodass der generierte Export nur noch mittels Copy-Paste in die Webtabelle eingefügt werden muss.
 
-`ods excel style=journal file="<Pfad>/SAS-Export T99_9_99.xlsx" options(embedded_titles='yes' sheet_interval='bygroup' sheet_name='#byval1'); title "Anzahl Personen nach Altersgruppe"; proc tabulate data=personen; by Jahr; [hier kommt Code] run; ods excel close;`
+`ods excel style=journal 
+	file="<Pfad>/SAS-Export T99_9_99.xlsx" 
+	options(embedded_titles='yes' sheet_interval='bygroup' sheet_name='#byval1'); 
+title "Anzahl Personen nach Altersgruppe"; 
+	proc tabulate data=personen; 
+		by Jahr; 
+		[hier kommt Code] 
+	run; 
+ods excel close;`
 
 *   `style=journal`: Bestimmt das Design, in dem der Excel-Export daherkommt. Für eine Übersicht über alle ODS-Styles siehe [hier](https://documentation.sas.com/doc/en/pgmsascdc/9.4_3.3/statug/statug_odsgraph_sect054.htm).
 *   `embedded_titles='yes'` bzw. `title`: Für die exportierte(n) Tabelle(n) kann ein Titel festgelegt werden. Dasselbe funktioniert auch mit Fussnoten (`embedded_footnotes='yes'` bzw. `footnote`).
@@ -40,7 +48,11 @@ Anwendungsbeispiel 1: Mit ODS Excel lässt sich die Struktur einer Webtabelle na
 
 Anwendungsbeispiel 2: Eine leicht modifizierte Form - ODS CSV - findet bei der Produktion von tsv-Files für die interaktiven Indikatoren Anwendung.
 
-`ods csv file = "<Pfad>\9999.tsv" encoding='utf-8' options(delimiter="09"x); proc tabulate data=personen; [hier kommt Code] run; ods csv close;`
+`ods csv file = "<Pfad>\9999.tsv" encoding='utf-8' options(delimiter="09"x); 
+	proc tabulate data=personen; 
+		[hier kommt Code] 
+	run; 
+ods csv close;`
 
 *   `encoding='utf-8'`: Sorgt u. a. dafür, dass die Umlaute richtig dargestellt werden.
 *   `delimiter="09"x`: Erzeugt ein Tabulator-getrenntes Dokument.

@@ -17,7 +17,7 @@ Horizontalisierung
 
 Liegen die Daten in der vertikalen Form vor, werden aber für die Weiterverarbeitung in der horizontalen Form gebraucht, so kann das mittels «Transponieren» erreicht werden.  
 ![](img/Transp_1.png)  
-                     **↓**  
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&darr;</strong></span><br/> 
 ![](img/Transp_3.png)
 
 #### Lösungsweg SAS Enterprise Guide
@@ -39,7 +39,7 @@ Vertikalisierung
 
 Liegen die Daten in der horizontalen Form vor, werden aber für die Weiterverarbeitung in der vertikalen Form gebraucht, so kann das ebenfalls mittels «Transponieren» erreicht werden.  
 ![](img/Transp_2.png)  
-                     **↓**  
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&darr;</strong></span><br/> 
 ![](img/Transp_1_1.png)
 
 #### Lösungsweg SAS Enterprise Guide
