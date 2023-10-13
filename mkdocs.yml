@@ -15,3 +15,4 @@ theme:
     navigation_depth: 3
     //nav_style: dark
 extra_css: [css/extra.css]
+use_directory_urls: false

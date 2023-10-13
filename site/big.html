@@ -4,11 +4,11 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="None">
+        
         
         
         <link rel="shortcut icon" href="img/favicon.ico">
-        <title>SAS User Guide</title>
+        <title>Grosse Datenmengen - SAS User Guide</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
@@ -18,7 +18,7 @@
         <script>hljs.highlightAll();</script> 
     </head>
 
-    <body class="homepage">
+    <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
                 <a class="navbar-brand" href="index.html">SAS User Guide</a>
@@ -31,7 +31,7 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem active">
+                            <li class="navitem">
                                 <a href="index.html" class="nav-link">Übersicht</a>
                             </li>
                             <li class="dropdown">
@@ -46,7 +46,7 @@
                             <li class="navitem">
                                 <a href="export.html" class="nav-link">Daten exportieren</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Spezialthemen <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -59,7 +59,7 @@
 </li>
                                     
 <li>
-    <a href="big.html" class="dropdown-item">Grosse Datenmengen</a>
+    <a href="big.html" class="dropdown-item active">Grosse Datenmengen</a>
 </li>
                                     
 <li>
@@ -79,12 +79,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" class="nav-link disabled">
+                                <a rel="prev" href="neweg.html" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="transp.html" class="nav-link">
+                                <a rel="next" href="rawdata.html" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -106,8 +106,28 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#ubersicht" class="nav-link">Übersicht</a>
+            <li class="nav-item" data-level="1"><a href="#umgang-mit-grossen-datenmengen" class="nav-link">Umgang mit grossen Datenmengen</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#output-komprimieren" class="nav-link">Output komprimieren</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#loschen-mit-proc-datasets" class="nav-link">Löschen mit PROC DATASETS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#effiziente-sortierung" class="nav-link">Effiziente Sortierung</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#auswahl-und-filter" class="nav-link">Auswahl und Filter</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#export-mittels-data-step" class="nav-link">Export mittels Data Step</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -115,110 +135,68 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="ubersicht">Übersicht</h1>
+<h1 id="umgang-mit-grossen-datenmengen">Umgang mit grossen Datenmengen</h1>
 <hr />
-<div class="jumbotron">
-<div class="row mb-3">
-  <div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="transp.html">Transponieren</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>Horizontalisierung</li>
-            <li>Vertikalisierung</li> <br> 
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="export.html" style="color:#00AA9E;">Daten exportieren</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>An Microsoft Excel senden</li>
-            <li>ODS Excel</li><br>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="code.html" style="color:#DC440E;">Nützlicher Code</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>put(), substr(), scan()</li>
-            <li>CASE Statement</li><br>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-  </div>
-<div class="row mb-3">
-<div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="neweg.html" style="color:#923F8D;">SAS Enterprise Guide 8.3</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>Anwendungsroutinen</li>
-        <li>Backup-Intervall</li> 
-            <li>Navigation und Ansicht</li>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="server.html" style="color:#923F8D;">Server-Migration</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>Libname Statements</li>
-            <li>Export mit ODS Excel</li><br>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-    <div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="big.html" style="color:#923F8D;">Grosse Datenmengen</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>Komprimieren und Löschen</li>
-            <li>Effiziente Sortierung</li>
-            <li>Export mittels Data Step</li>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-    </div>
-    <div class="row mb-3">
-<div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="rawdata.html" style="color:#923F8D;">Neue Rohdatenablage</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>Einlesen mit PROC IMPORT</li>
-              <li>Routine «Daten importieren»</li> <br>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div></div>
+<p>Bei der Arbeit mit sehr grossen Datenmengen kann es zu Ressourcen- bzw. Speicherproblemen kommen. Um dem entgegenzuwirken gibt es einige einfache Möglichkeiten.</p>
+<h2 id="output-komprimieren">Output komprimieren</h2>
+<p>Abfragen im SAS Enterprise Guide können um diverse Optionen ergänzt werden:<br />
+Optionen -&gt; Optionen für diese Abfrage -&gt; Ergebnisse <img alt="" src="img/big1.png" /></p>
+<p>Im Feld <code>Optionen:</code> kann SQL-Code eingegeben werden. In diesem Fall <code>compress=yes</code>. Dies führt dazu, dass der Output der Abfrage komprimiert wird und weniger Speicherplatz auf dem SAS-Server in Anspruch nimmt. Zudem sollte die Abfrage so auch schneller durchlaufen. <img alt="" src="img/big2.png" /></p>
+<h2 id="loschen-mit-proc-datasets">Löschen mit PROC DATASETS</h2>
+<p>Nicht mehr benötigte Datensätze brauchen unnötig Speicherplatz im WORK-Verzeichnis und sollten deshalb gelöscht werden. Zum Beispiel: Wenn mehrere Datensätze durch einen Merge zu einem neuen Datensatz zusammengefügt werden, können nach dem Merge die ursprünglichen Datensätze gelöscht werden.</p>
+<blockquote>
+<p>proc datasets lib=work;<br />
+delete dataset1 dataset2 dataset3;<br />
+run;</p>
+</blockquote>
+<p>Dieser Ansatz ist eher für SAS-Projekte mit Programmierung geeignet, kann aber theoretisch auch mit vordefinierten Abfragen und Anwendungsroutinen des SAS Enterprise Guide kombiniert werden. Dazu einfach den Code in ein Programm schreiben, rechter Mausklick auf den zu löschenden Datensatz und «Verknüpfen mit» und das Programm mit dem Proc Datasets-Statement auswählen.</p>
+<p><img alt="" src="img/big3.png" /></p>
+<p>WICHTIG: Beim Schliessen des SAS Enterprise Guide werden alle Daten im WORK-Verzeichnis gelöscht. Das Löschen mittels Proc Datasets ist also nicht bei jedem noch so kleinen SAS-Projekt nötig. Wichtig ist es eher bei sehr grossen Projekten mit vielen Abfragen bzw. Programmen und mit grossen Datensätzen.</p>
+<h2 id="effiziente-sortierung">Effiziente Sortierung</h2>
+<p>Das Sortieren von Datensätzen kann vor allem bei grossen Datensätzen sehr ressourcenintensiv sein. Es gibt zwei Ansätze um sowohl Zeit als auch Speicherplatz einzusparen.</p>
+<p>Das Proc Sort-Statement um die Option TAGSORT ergänzen:</p>
+<blockquote>
+<p>proc sort data=person <strong>tagsort</strong>;<br />
+by alter;<br />
+run;</p>
+</blockquote>
+<p>Wenn nur ein Subset eines Datensatzes sortiert werden soll, wird das oft in zwei Schritten gemacht:</p>
+<blockquote>
+<p>data person_f (where=(geschlecht="F"));<br />
+set person;<br />
+run;</p>
+<p>proc sort data=person_f out=person_f_sorted;<br />
+by alter;<br />
+run;</p>
+</blockquote>
+<p>Ein Kombinieren dieser beiden Schritte spart sowohl Zeit als auch Speicherplatz:</p>
+<blockquote>
+<p>proc sort data=person (where=(geschlecht="F")) out=person_f_sorted;<br />
+by alter;<br />
+run;</p>
+</blockquote>
+<h2 id="auswahl-und-filter">Auswahl und Filter</h2>
+<p>Aus jeder Abfrage resultierte ein neuer Datensatz, der im WORK-Verzeichnis gespeichert wird. Je kleiner dieser ist, desto schneller läuft die Abfrage durch und desto weniger Speicher wird im WORK-Verzeichnis in Anspruch genommen. Deshalb sind folgende zwei Grundsätze wichtig:</p>
+<ul>
+<li>Auswahl der Variablen: So früh wie möglich nur noch mit den relevanten Variablen arbeiten. Am besten bereits bei der ersten Abfrage die unnötigen Variablen weglassen.</li>
+<li>Filter setzen: So früh wie möglich filtern. Wenn für eine Auswertung nur eine bestimmte Personengruppe benötigt wird, sollte am besten gleich in der ersten Abfrage nach dieser gefiltert werden.</li>
+</ul>
+<h2 id="export-mittels-data-step">Export mittels Data Step</h2>
+<p>Um einen Datensatz aus SAS in ein externes File zu exportieren, wird oft ODS und ein Proc Print-Statement verwendet. Ist der Datensatz allerdings sehr gross, dann kann das extrem lange dauern. In diesem Fall bietet sich unter Umständen ein Export mittels Data Step und PUT-Statement an:</p>
+<blockquote>
+<p>data _null_;<br />
+set table1;<br />
+file="&lt; Pfad &gt;\Dateiname.csv" encoding="UTF-8" dlm=";";<br />
+if _n_=1 then put "Name;Geschlecht;Merkmal;Wert";<br />
+put Name Geschlecht Merkmal Wert;<br />
+run;</p>
+</blockquote>
+<ul>
+<li><code>dlm</code>: Bestimmt das Trennzeichen zwischen den Datenreihen, in diesem Fall ein Semikolon.</li>
+<li><code>if _n_=1</code>: Der Nachteil dieser Methode ist, dass die Spaltennamen nicht exportiert werden, sondern nur die Daten. Deshalb muss die erste Zeile mit den Spaltennamen manuell hinzugefügt werden. Wichtig ist es, die Spaltennamen mit dem korrekten Trennzeichen aneinanderzuhängen und in Anführungszeichen zu setzen.</li>
+<li><code>put</code>: Hier werden alle Variablen erfasst, die exportiert werden sollen.</li>
+</ul>
+<hr /></div>
             </div>
         </div>
 
@@ -298,8 +276,3 @@
 
     </body>
 </html>
-
-<!--
-MkDocs version : 1.5.3
-Build Date UTC : 2023-10-13 14:20:31.016706+00:00
--->

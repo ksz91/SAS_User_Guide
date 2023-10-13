@@ -4,11 +4,11 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="None">
+        
         
         
         <link rel="shortcut icon" href="img/favicon.ico">
-        <title>SAS User Guide</title>
+        <title>Nützlicher Code - SAS User Guide</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
@@ -18,7 +18,7 @@
         <script>hljs.highlightAll();</script> 
     </head>
 
-    <body class="homepage">
+    <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
                 <a class="navbar-brand" href="index.html">SAS User Guide</a>
@@ -31,7 +31,7 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem active">
+                            <li class="navitem">
                                 <a href="index.html" class="nav-link">Übersicht</a>
                             </li>
                             <li class="dropdown">
@@ -67,7 +67,7 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="navitem">
+                            <li class="navitem active">
                                 <a href="code.html" class="nav-link">Nützlicher Code</a>
                             </li>
                         </ul>
@@ -79,12 +79,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" class="nav-link disabled">
+                                <a rel="prev" href="rawdata.html" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="transp.html" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -106,8 +106,24 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#ubersicht" class="nav-link">Übersicht</a>
+            <li class="nav-item" data-level="1"><a href="#nutzlicher-code" class="nav-link">Nützlicher Code</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#put" class="nav-link">put()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#substr" class="nav-link">substr()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#scan" class="nav-link">scan()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#case-statement" class="nav-link">CASE Statement</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -115,110 +131,80 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="ubersicht">Übersicht</h1>
+<h1 id="nutzlicher-code">Nützlicher Code</h1>
 <hr />
-<div class="jumbotron">
-<div class="row mb-3">
-  <div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="transp.html">Transponieren</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>Horizontalisierung</li>
-            <li>Vertikalisierung</li> <br> 
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="export.html" style="color:#00AA9E;">Daten exportieren</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>An Microsoft Excel senden</li>
-            <li>ODS Excel</li><br>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="code.html" style="color:#DC440E;">Nützlicher Code</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>put(), substr(), scan()</li>
-            <li>CASE Statement</li><br>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-  </div>
-<div class="row mb-3">
-<div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="neweg.html" style="color:#923F8D;">SAS Enterprise Guide 8.3</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>Anwendungsroutinen</li>
-        <li>Backup-Intervall</li> 
-            <li>Navigation und Ansicht</li>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="server.html" style="color:#923F8D;">Server-Migration</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>Libname Statements</li>
-            <li>Export mit ODS Excel</li><br>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-    <div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="big.html" style="color:#923F8D;">Grosse Datenmengen</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>Komprimieren und Löschen</li>
-            <li>Effiziente Sortierung</li>
-            <li>Export mittels Data Step</li>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-    </div>
-    <div class="row mb-3">
-<div class="col-sm-4">
-    <div class="card">
-       <h3 class="card-header"><a href="rawdata.html" style="color:#923F8D;">Neue Rohdatenablage</h3></a>
-      <div class="card-body">
-        <p class="card-text">
-            <ul style="margin:0;padding:0;list-style:none;">
-            <li>Einlesen mit PROC IMPORT</li>
-              <li>Routine «Daten importieren»</li> <br>
-             </ul> 
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div></div>
+<p>Auch beim Arbeiten mit Abfragen und Anwendungsroutinen des SAS Enterprise Guide kommt man teilweise nicht ganz um die Verwendung von Code bzw. Funktionen herum. Oft ist es die einzige oder zumindest die beste Möglichkeit, auf einfache und schnelle Art und Weise neue Variablen zu generieren. Im Folgenden sind einige nützliche Funktionen und Statements zusammengetragen. Sie können in einer Abfrage folgendermassen verwendet werden:</p>
+<p>Neue berechnete Spalte hinzufügen <img alt="img" src="img/neue_spalte.png" /> -&gt; Erweiterter Ausdruck</p>
+<h2 id="put">put()</h2>
+<p>Mit der put()-Funktion lässt sich eine numerische Variable mittels Format in eine Textvariable umwandeln.</p>
+<blockquote>
+<p>put(Variable, Format.)</p>
+</blockquote>
+<p>Anwendungsbeispiel: Die Personen in einem Datensatz sollen anhand ihres Alters verschiedenen Altersgruppen zugeordnet werden. Anschliessend soll die Anzahl Personen pro Altersgruppe und Geschlecht gezählt werden.</p>
+<p><img alt="img" src="img/code1.png" /></p>
+<p>Problem: Es reicht nicht, der Variable <em>Alter</em> in der Abfrage ein Format für die Altersgruppen zuzuweisen. Das Format bzw. die Altersgruppe ist zwar im Vordergrund sichtbar, die Variable enthält aber immer noch das exakte Alter. Wird nun die Anzahl Personen nach Geschlecht und Alter gezählt, resultiert überall eine 1, auch wenn es bspw. drei Frauen in der Altersgruppe «20 bis 60» gäbe.</p>
+<p><img alt="img" src="img/code2.png" /> <img alt="" src="img/code5.png" /></p>
+<p>Ein möglicher Lösungsansatz ist es, die numerische Variable <em>Alter</em> in eine Textvariable <em>Altersgruppe</em> umzuwandeln:</p>
+<p><code>put(t1.Alter, fmt_alter.)</code></p>
+<p><img alt="img" src="img/code13.png" /></p>
+<p>Anschliessend kann die Anzahl Personen nach der Variable <em>Geschlecht</em> und der neuen Variable <em>Altersgruppe</em> gezählt werden.</p>
+<p><img alt="img" src="img/code4.png" /></p>
+<p>Hinweis: Dieses Problem kann auch mittels <a href="code.html#case-statement">CASE Statement</a> gelöst werden.</p>
+<h2 id="substr">substr()</h2>
+<p>Mit der substr()-Funktion lässt sich ein Teil eines Strings - ein Substring - extrahieren.</p>
+<blockquote>
+<p>substr(Variable, Startpunkt, Länge)</p>
+</blockquote>
+<p>Anwendungsbeispiel: Vom Vornamen der Personen im Datensatz soll jeweils der Anfangsbuchstabe extrahiert und in einer neuen Variable gespeichert werden. Dieser Substring beginnt beim ersten Buchstaben und ist ein Zeichen lang:</p>
+<p><code>substr(t1.Name, 1, 1)</code></p>
+<p><img alt="img" src="img/code6.png" /></p>
+<p>In einer weiteren Variable sollen die zwei letzten Buchstaben des Vornamens gespeichert werden. Dieser Substring beginnt beim zweitletzten Buchstaben und ist zwei Zeichen lang:</p>
+<p><code>substr(t1.Name, length(t1.Name)-1, 2)</code></p>
+<p><img alt="img" src="img/code7.png" /></p>
+<p>Schliesslich soll noch der restliche, mittlere Teil des Vornamens in einer separaten Variable gespeichert werden. Dieser Substring beginnt beim zweiten Buchstaben und enthält alle Zeichen ausser das erste und die letzten zwei, umfasst also «Gesamte Anzahl - 3» Zeichen:</p>
+<p><code>substr(t1.Name, 2, length(t1.Name)-3)</code></p>
+<p><img alt="img" src="img/code8.png" /></p>
+<h2 id="scan">scan()</h2>
+<p>Mit der scan()-Funktion lässt sich ein Wort aus einer Reihe von Wörtern extrahieren, welche mit bestimmten Trennzeichen abgetrennt sind.</p>
+<blockquote>
+<p>scan(Variable, ntes Wort [, Trennzeichen])</p>
+</blockquote>
+<p>Nach folgenden Trennzeichen wird automatisch gesucht: Leerzeichen ! $ % &amp; ( ) * + , – . / ; &lt; |</p>
+<p>Anwendungsbeispiel: In einem Datensatz ist zu jeder Person der komplette Name erfasst. Nachname und Vorname sind dabei mit Komma abgetrennt.</p>
+<p><img alt="img" src="img/code9.png" /></p>
+<p>Nun sollen zwei neue Variablen erstellt werden, welche den Vornamen und den Nachnamen enthalten:</p>
+<p>Vorname: <code>scan(t1.Name, 2)</code><br />
+Nachname: <code>scan(t1.Name, 1)</code></p>
+<p><img alt="img" src="img/code10.png" /></p>
+<p>Problem: Wenn ein Doppelname enthalten ist, funktioniert dieser Code nicht, da der Bindestrich automatisch als Trennzeichen erkennt wird.</p>
+<p><img alt="img" src="img/code11.png" /></p>
+<p>In diesem Fall muss der Funktion explizit die Information mitgegeben werden, welches Trennzeichen verwendet werden soll:</p>
+<p>Vorname: <code>scan(t1.Name, 2, ",")</code><br />
+Nachname: <code>scan(t1.Name, 1, ",")</code></p>
+<p><img alt="img" src="img/code12.png" /></p>
+<h2 id="case-statement">CASE Statement</h2>
+<p>Mit einem CASE Statement kann eine neue Variable generiert werden, deren Ausprägungen von der erfüllten Bedingung abhängig sind.</p>
+<blockquote>
+<p>CASE<br />
+   WHEN Bedingung1 THEN Resultat1<br />
+   WHEN Bedingung2 THEN Resultat2<br />
+   WHEN BedingungN THEN ResultatN<br />
+   ELSE Resultat<br />
+END</p>
+</blockquote>
+<p>Anwendungsbeispiel: Die Personen in einem Datensatz sollen anhand ihres Alters verschiedenen Altersgruppen zugeordnet werden. Anschliessend soll die Anzahl Personen pro Altersgruppe und Geschlecht gezählt werden.</p>
+<p><img alt="img" src="img/code1.png" /></p>
+<p>Dazu wird zuerst mittels CASE-Statement eine neue Variable <em>Altersgruppe</em> generiert:</p>
+<p><code>CASE 
+    WHEN t1.Alter BETWEEN 0 AND 19 THEN "Bis 20 Jahre" 
+    WHEN t1.Alter BETWEEN 20 AND 60 THEN "20 bis 60 Jahre" 
+    WHEN t1.Alter &gt; 60 THEN "Über 60 Jahre" 
+END</code></p>
+<p><img alt="img" src="img/code13.png" /></p>
+<p>Anschliessend kann die Anzahl Personen nach der Variable Geschlecht und der neuen Variable Altersgruppe gezählt werden.</p>
+<p><img alt="img" src="img/code4.png" /></p>
+<p>Hinweis: Dieses Problem kann auch mittels <a href="code.html#put">put()-Funktion</a> gelöst werden.</p>
+<hr /></div>
             </div>
         </div>
 
@@ -298,8 +284,3 @@
 
     </body>
 </html>
-
-<!--
-MkDocs version : 1.5.3
-Build Date UTC : 2023-10-13 14:20:31.016706+00:00
--->

@@ -48,6 +48,29 @@ margin-bottom: 20px;
     margin-bottom: 0 !important;
 }
 
+blockquote {
+    font-family: "Courier New";
+    background: #f9f9f9;
+    border-left: 5px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 1em 5px .1em 5px;
+    quotes: "\201C""\201D""\2018""\2019";
+    border-radius: 5px;
+}
+
+code {
+    font-family: "Courier New";
+    display: inline-block;
+    background: #f9f9f9;
+    border: 0px solid;
+    padding: 5px;
+    border-radius: 5px;
+}
+img[alt="img"]{
+  margin: 10px 0px 10px 0px;
+}
+
+
 .container {
   padding: 2px 16px;
 }
