@@ -1,3 +1,7 @@
+.icon {
+  color: #1DA1F2;
+}
+
 h1 {
   font-size: 36px;
   font-weight: 400;
@@ -74,3 +78,5 @@ img[alt="img"]{
 .container {
   padding: 2px 16px;
 }
+
+

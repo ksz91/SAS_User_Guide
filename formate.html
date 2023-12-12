@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="img/favicon.ico">
-        <title>Grosse Datenmengen - SAS User Guide</title>
+        <title>Benutzerdefinierte Formate - SAS User Guide</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
@@ -34,12 +34,12 @@
                             <li class="navitem">
                                 <a href="index.html" class="nav-link">Übersicht</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Daten weiterverarbeiten <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="formate.html" class="dropdown-item">Benutzerdefinierte Formate</a>
+    <a href="formate.html" class="dropdown-item active">Benutzerdefinierte Formate</a>
 </li>
                                     
 <li>
@@ -50,7 +50,7 @@
                             <li class="navitem">
                                 <a href="export.html" class="nav-link">Daten exportieren</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Spezialthemen <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -63,7 +63,7 @@
 </li>
                                     
 <li>
-    <a href="big.html" class="dropdown-item active">Grosse Datenmengen</a>
+    <a href="big.html" class="dropdown-item">Grosse Datenmengen</a>
 </li>
                                     
 <li>
@@ -83,12 +83,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="neweg.html" class="nav-link">
+                                <a rel="prev" href="index.html" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="rawdata.html" class="nav-link">
+                                <a rel="next" href="transp.html" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -110,25 +110,29 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#umgang-mit-grossen-datenmengen" class="nav-link">Umgang mit grossen Datenmengen</a>
+            <li class="nav-item" data-level="1"><a href="#benutzerdefinierte-formate" class="nav-link">Benutzerdefinierte Formate</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#output-komprimieren" class="nav-link">Output komprimieren</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#loschen-mit-proc-datasets" class="nav-link">Löschen mit PROC DATASETS</a>
+            <li class="nav-item" data-level="2"><a href="#syntax" class="nav-link">Syntax</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#effiziente-sortierung" class="nav-link">Effiziente Sortierung</a>
+            <li class="nav-item" data-level="2"><a href="#numerisch-oder-alphanumerisch" class="nav-link">Numerisch oder alphanumerisch</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#auswahl-und-filter" class="nav-link">Auswahl und Filter</a>
+            <li class="nav-item" data-level="2"><a href="#anwenden-von-benutzerdefinierten-formaten" class="nav-link">Anwenden von benutzerdefinierten Formaten</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#export-mittels-data-step" class="nav-link">Export mittels Data Step</a>
+            <li class="nav-item" data-level="2"><a href="#gruppieren-mittels-format" class="nav-link">Gruppieren mittels Format</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#sortieren-mittels-format" class="nav-link">Sortieren mittels Format</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#totale-und-subtotale-mittels-format" class="nav-link">Totale und Subtotale mittels Format</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -139,66 +143,125 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="umgang-mit-grossen-datenmengen">Umgang mit grossen Datenmengen</h1>
+<h1 id="benutzerdefinierte-formate">Benutzerdefinierte Formate</h1>
 <hr />
-<p>Bei der Arbeit mit sehr grossen Datenmengen kann es zu Ressourcen- bzw. Speicherproblemen kommen. Um dem entgegenzuwirken gibt es einige einfache Möglichkeiten.</p>
-<h2 id="output-komprimieren">Output komprimieren</h2>
-<p>Abfragen im SAS Enterprise Guide können um diverse Optionen ergänzt werden:<br />
-Optionen -&gt; Optionen für diese Abfrage -&gt; Ergebnisse <img alt="" src="img/big1.png" /></p>
-<p>Im Feld <code>Optionen:</code> kann SQL-Code eingegeben werden. In diesem Fall <code>compress=yes</code>. Dies führt dazu, dass der Output der Abfrage komprimiert wird und weniger Speicherplatz auf dem SAS-Server in Anspruch nimmt. Zudem sollte die Abfrage so auch schneller durchlaufen. <img alt="" src="img/big2.png" /></p>
-<h2 id="loschen-mit-proc-datasets">Löschen mit PROC DATASETS</h2>
-<p>Nicht mehr benötigte Datensätze brauchen unnötig Speicherplatz im WORK-Verzeichnis und sollten deshalb gelöscht werden. Zum Beispiel: Wenn mehrere Datensätze durch einen Merge zu einem neuen Datensatz zusammengefügt werden, können nach dem Merge die ursprünglichen Datensätze gelöscht werden.</p>
+<h2 id="syntax">Syntax</h2>
+<p>SAS bietet die Möglichkeit, eigene Formate zu schreiben. Formate werden mittels PROC FORMAT-Statement in folgender Form erstellt:  </p>
 <blockquote>
-<p>proc datasets lib=work;<br />
-delete dataset1 dataset2 dataset3;<br />
+<p>proc format;<br />
+value &lt; Formatname &gt;<br />
+   [...hier wird das Format definiert...];<br />
 run;</p>
 </blockquote>
-<p>Dieser Ansatz ist eher für SAS-Projekte mit Programmierung geeignet, kann aber theoretisch auch mit vordefinierten Abfragen und Anwendungsroutinen des SAS Enterprise Guide kombiniert werden. Dazu einfach den Code in ein Programm schreiben, rechter Mausklick auf den zu löschenden Datensatz und «Verknüpfen mit» und das Programm mit dem Proc Datasets-Statement auswählen.</p>
-<p><img alt="" src="img/big3.png" /></p>
-<p>WICHTIG: Beim Schliessen des SAS Enterprise Guide werden alle Daten im WORK-Verzeichnis gelöscht. Das Löschen mittels Proc Datasets ist also nicht bei jedem noch so kleinen SAS-Projekt nötig. Wichtig ist es eher bei sehr grossen Projekten mit vielen Abfragen bzw. Programmen und mit grossen Datensätzen.</p>
-<h2 id="effiziente-sortierung">Effiziente Sortierung</h2>
-<p>Das Sortieren von Datensätzen kann vor allem bei grossen Datensätzen sehr ressourcenintensiv sein. Es gibt zwei Ansätze um sowohl Zeit als auch Speicherplatz einzusparen.</p>
-<p>Das Proc Sort-Statement um die Option TAGSORT ergänzen:</p>
-<blockquote>
-<p>proc sort data=person <strong>tagsort</strong>;<br />
-by alter;<br />
-run;</p>
-</blockquote>
-<p>Wenn nur ein Subset eines Datensatzes sortiert werden soll, wird das oft in zwei Schritten gemacht:</p>
-<blockquote>
-<p>data person_f (where=(geschlecht="F"));<br />
-set person;<br />
-run;</p>
-<p>proc sort data=person_f out=person_f_sorted;<br />
-by alter;<br />
-run;</p>
-</blockquote>
-<p>Ein Kombinieren dieser beiden Schritte spart sowohl Zeit als auch Speicherplatz:</p>
-<blockquote>
-<p>proc sort data=person (where=(geschlecht="F")) out=person_f_sorted;<br />
-by alter;<br />
-run;</p>
-</blockquote>
-<h2 id="auswahl-und-filter">Auswahl und Filter</h2>
-<p>Aus jeder Abfrage resultierte ein neuer Datensatz, der im WORK-Verzeichnis gespeichert wird. Je kleiner dieser ist, desto schneller läuft die Abfrage durch und desto weniger Speicher wird im WORK-Verzeichnis in Anspruch genommen. Deshalb sind folgende zwei Grundsätze wichtig:</p>
+<p>Bei der Namensgebung gibt es einige Konventionen zu berücksichtigen: </p>
 <ul>
-<li>Auswahl der Variablen: So früh wie möglich nur noch mit den relevanten Variablen arbeiten. Am besten bereits bei der ersten Abfrage die unnötigen Variablen weglassen.</li>
-<li>Filter setzen: So früh wie möglich filtern. Wenn für eine Auswertung nur eine bestimmte Personengruppe benötigt wird, sollte am besten gleich in der ersten Abfrage nach dieser gefiltert werden.</li>
+<li>Formatnamen dürfen nicht mit einer Zahl enden.  </li>
+<li>Bei alphanumerischen Formaten muss der Name mit einem Dollarzeichen ($) beginnen.  </li>
+<li>Der Formatname darf nich länger als 32 Zeichen sein.  </li>
 </ul>
-<h2 id="export-mittels-data-step">Export mittels Data Step</h2>
-<p>Um einen Datensatz aus SAS in ein externes File zu exportieren, wird oft ODS und ein Proc Print-Statement verwendet. Ist der Datensatz allerdings sehr gross, dann kann das extrem lange dauern. In diesem Fall bietet sich unter Umständen ein Export mittels Data Step und PUT-Statement an:</p>
-<blockquote>
-<p>data _null_;<br />
-set table1;<br />
-file="&lt; Pfad &gt;\Dateiname.csv" encoding="UTF-8" dlm=";";<br />
-if _n_=1 then put "Name;Geschlecht;Merkmal;Wert";<br />
-put Name Geschlecht Merkmal Wert;<br />
-run;</p>
-</blockquote>
+<p>Hinweis: Innerhalb eines PROC FORMAT können mehrere VALUE-Statements bzw. mehrere Formate definiert werden. </p>
+<h2 id="numerisch-oder-alphanumerisch">Numerisch oder alphanumerisch</h2>
+<p>Formate können numerisch oder alphanumerisch sein:</p>
 <ul>
-<li><code>dlm</code>: Bestimmt das Trennzeichen zwischen den Datenreihen, in diesem Fall ein Semikolon.</li>
-<li><code>if _n_=1</code>: Der Nachteil dieser Methode ist, dass die Spaltennamen nicht exportiert werden, sondern nur die Daten. Deshalb muss die erste Zeile mit den Spaltennamen manuell hinzugefügt werden. Wichtig ist es, die Spaltennamen mit dem korrekten Trennzeichen aneinanderzuhängen und in Anführungszeichen zu setzen.</li>
-<li><code>put</code>: Hier werden alle Variablen erfasst, die exportiert werden sollen.</li>
+<li>
+<p>Wenn ein Datensatz nur codierte Werte enthält, dann wird ein <em>numerisches Format</em> verwendet, um den Codes eine Bezeichnung zuzuordnen, bspw. bei der Variable Geschlecht den Codes 1 und 2  die Bezeichnungen «männlich» und «weiblich»: </p>
+<p><code>proc format;
+value fmt_gesl
+    1="männlich"
+    2="weiblich";
+run;</code>  </p>
+<p>Wird das Format <em>fmt_gesl</em> auf die Variable <em>Geschlecht</em> angewendet ergibt sich folgende Transformation:<br />
+<img alt="" src="img/format1.png" />
+&ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&rarr;</strong></span>&ensp;&ensp;
+<img alt="" src="img/format2.png" />  </p>
+</li>
+<li>
+<p>Mit einem <em>alphanumerischen Format</em> werden den Ausprägungen einer Textvariable neue Bezeichnungen zugewiesen, bspw. dem Wohnort der entsprechende Kanton: </p>
+<p><code>proc format;
+value $fmt_wohnort
+    "Basel","Riehen"="Basel-Stadt"
+    "Zürich"="Zürich";
+run;</code>  </p>
+<p>Wird das Format <em>$fmt_wohnort</em> auf die Variable <em>Wohnort</em> angewendet ergibt sich folgende Transformation:<br />
+<img alt="" src="img/format2.png" />
+&ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&rarr;</strong></span>&ensp;&ensp;
+<img alt="" src="img/format3.png" /></p>
+</li>
+</ul>
+<h2 id="anwenden-von-benutzerdefinierten-formaten">Anwenden von benutzerdefinierten Formaten</h2>
+<p>Es gibt verschiedene Möglichkeiten, die erzeugten Formate einer Variable zuzuweisen:  </p>
+<ul>
+<li>Abfrage erstellen: Doppelklick auf die entsprechende Variable -&gt; Ändern -&gt;  Benutzerdefiniert 
+    <img alt="" src="img/format4.png" />
+    <img alt="" src="img/format5.png" />  </li>
+<li>Zusammenfassungstabelle: Ensprechende Variable anwählen -&gt; Überschriftformat -&gt; Benutzerdefiniert
+    <img alt="" src="img/format6.png" />
+    <img alt="" src="img/format7.png" /></li>
+<li>
+<p>Programmcode: Formate können direkt in Prozeduren (PROC TABULATE, PROC PRINT, PROC REPORT)...</p>
+<p><code>proc tabulate data=work.person;
+    var groesse;
+    class geschlecht /  order=unformatted missing;
+    format Geschlecht fmt_gesl. Wohnort $fmt_wohnort.;
+    table geschlecht, groesse*mean;
+run;</code></p>
+<p>...oder auch in einem DATA STEP verwendet werden.</p>
+<p><code>data person_fmt;
+set person;
+format Geschlecht fmt_gesl. Wohnort $fmt_wohnort.;
+run;</code></p>
+</li>
+</ul>
+<p>Hinweis: Um das Format im Code zu referenzieren wird der Formatname gefolgt von einem Punkt verwendet.</p>
+<h2 id="gruppieren-mittels-format">Gruppieren mittels Format</h2>
+<p>Mit Formaten kann nicht nur einzelnen Werten eine Bezeichnung zugeordnet werden, es können auch mehrere Werte zu einer Gruppe zusammengefasst werden.  </p>
+<p>Anwendungsbeispiel: Anhand der Variable Alter sollen Altersgruppen gebildet werden.</p>
+<p><code>proc format;
+value fmt_alter
+    0-19 = "bis 20 Jahre"  
+    20-60 = "20 bis 60 Jahre"  
+    61-high = "über 60 Jahre";
+run;</code></p>
+<p>Wichtig: Für gewisse Anwendungen (bspw. Summieren nach Altersgruppe in einer Abfrage) reicht es nicht, der numerischen Variable einfach das Format <em>fmt_alter</em> zuzuweisen, sondern es muss eine neue Variable <em>Altersgruppe</em> generiert werden. Mehr dazu <a href="code.html#put">hier</a>.</p>
+<h2 id="sortieren-mittels-format">Sortieren mittels Format</h2>
+<p>Beim Arbeiten mit Formaten und Auswertungen mittels Zusammenfassungstabelle ist manchmal eine bestimmte Reihenfolge erforderlich, bspw. weil diese für einen tsv-Export benötigt wird. Mit der Option <code>notsorted</code> kann die Reihenfolge aus dem PROC FORMAT-Statement erzwungen werden.</p>
+<p><code>proc format;
+value fmt_alter (notsorted)
+    61-high = "über 60 Jahre"
+    20-60 = "20 bis 60 Jahre" 
+    0-19 = "bis 20 Jahre";
+run;</code></p>
+<p>Damit es mit der Reihenfolge klappt, sind in der Zusammenfassungstabelle einige Einstellungen nötig:  </p>
+<ul>
+<li><code>Sortieren nach</code>: Hier <code>Dateireihenfolge</code> auswählen.  </li>
+<li><code>Ettiketten aus Format vorab übernehmen</code>: Auf <code>Wahr</code> setzen, damit das Format vor dem Ausführen der Zusammenfassungstabelle geladen wird.  </li>
+<li><code>Überschriftformat</code>: Hier das entsprechende benutzerdefinierte Format auswählen, in diesem Beispiel <code>fmt_alter</code>.<br />
+<img alt="" src="img/format8.png" />  </li>
+</ul>
+<p>So kann die Anzahl Personen pro Altersgruppe nach Geschlecht bestimmt und das Ergebnis nach absteigender Altersgruppe sortiert werden:<br />
+<img alt="" src="img/format9.png" />
+    &ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&rarr;</strong></span>&ensp;&ensp;
+    <img alt="" src="img/format10.png" />  </p>
+<h2 id="totale-und-subtotale-mittels-format">Totale und Subtotale mittels Format</h2>
+<p>Mit Formaten können auch Totale oder Subtotale gebildet werden. In diesem Fall werden den Werten mehrere Labels zugeordnet, weshalb zusätzlich zur Option <code>notsorted</code> auch die Option <code>multilabel</code> verwendet werden muss. Bspw. gehören die 13-Jährigen dann zur Gruppe <em>unter 15 Jahre</em> und <em>Total unter 65 Jahre</em>.  </p>
+<p><code>proc format;
+value fmt_alter (multilabel notsorted)
+    0-14 = "unter 15 Jahre"
+    15-24 ="15 bis 24 Jahre" 
+    25-44 = "25 bis 44 Jahre"
+    45-64 = "45 bis 64 Jahre"  
+    0-64 = "Total unter 65 Jahre"
+    65-high = "65 Jahre und mehr"
+    0-high = "Total";
+run;</code></p>
+<p>Zusätzlich zu den im <a href="formate.html#sortieren-mittels-format">vorherigen Abschnitt</a> beschriebenen Einstellungen muss Folgendes eingestellt werden:</p>
+<ul>
+<li><code>Formate mit mehreren Etiketten</code>: Auf <code>Aktiviert</code> setzen.
+<img alt="" src="img/format11.png" /><br />
+So können das Subtotal für die unter 65-Jährigen und das Total aller Personen hinzugefügt werden:<br />
+<img alt="" src="img/format9.png" />
+    &ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&rarr;</strong></span>&ensp;&ensp;
+    <img alt="" src="img/format12.png" />  </li>
 </ul>
 <hr /></div>
             </div>
