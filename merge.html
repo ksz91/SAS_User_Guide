@@ -214,13 +214,13 @@ run;</code></p>
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&darr;</strong></span><br/> 
 <img alt="" src="img/merge21.png" />  </p>
 <h4 id="left-join">Left Join</h4>
-<p>Der neu erzeugte Datensatz enthält nur die Beobachtungen, welche im ersten Ausgangsdatensatz vorkommen. Diejenigen Beobachtungen, welche im zweiten Ausgangsdatensatz nicht vorkommen, weisen für die Variable <em>Grösse</em> einen fehlenden Wert auf.
+<p>Der neu erzeugte Datensatz enthält nur die Beobachtungen, welche im ersten Ausgangsdatensatz vorkommen. Diejenigen Beobachtungen, welche im zweiten Ausgangsdatensatz nicht vorkommen, weisen für die Variable <em>Grösse</em> einen fehlenden Wert auf.<br />
 <img alt="" src="img/merge19.png" />
 <img alt="" src="img/merge20.png" /><br />
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&darr;</strong></span><br/> 
 <img alt="" src="img/merge22.png" />  </p>
 <h4 id="right-join">Right Join</h4>
-<p>Der neu erzeugte Datensatz enthält nur die Beobachtungen, welche im zweiten Ausgangsdatensatz vorkommen. Diejenigen Beobachtungen, welche im ersten Ausgangsdatensatz nicht vorkommen, weisen für die Variable <em>Gewicht</em> einen fehlenden Wert auf.<br />
+<p>Der neu erzeugte Datensatz enthält nur die Beobachtungen, welche im zweiten Ausgangsdatensatz vorkommen. Diejenigen Beobachtungen, welche im ersten Ausgangsdatensatz nicht vorkommen, weisen für die Variable <em>Gewicht</em> einen fehlenden Wert auf.  <br />
 <img alt="" src="img/merge19.png" />
 <img alt="" src="img/merge20.png" /><br />
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&darr;</strong></span><br/> 
@@ -230,7 +230,9 @@ run;</code></p>
 <img alt="" src="img/merge19.png" />
 <img alt="" src="img/merge20.png" /><br />
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&darr;</strong></span><br/> 
-<img alt="" src="img/merge24.png" /></p>
+<img alt="" src="img/merge25.png" /></p>
+<p>Hinweis: Bei den anderen Join-Arten reicht es, die Variablen Name und Alter aus einem der beiden Datensätze t1 oder t2 auszuwählen. Beim Full Outer Join funktioniert das nicht. Werden die Variablen aus t1 genommen, dann resultieren fehlende Werte bei derjenigen Beobachtung, die nur in t2 vorkommt und umgekehrt. Um sicherzugehen, dass die Variablen Name und Alter keine fehlenden Werte aufweisen, braucht es einen kleinen Umweg über die COALESCE-Funktion bzw. «Neue berechnete Spalte hinzufügen -&gt; Erweiterter Ausdruck»:
+<img alt="" src="img/merge26.png" /></p>
 <hr /></div>
             </div>
         </div>
