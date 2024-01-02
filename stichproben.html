@@ -128,6 +128,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#proc-surveymeans" class="nav-link">PROC SURVEYMEANS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -138,7 +142,7 @@
 <h1 id="stichprobenanalyse">Stichprobenanalyse</h1>
 <hr />
 <h2 id="proc-surveyfreq">PROC SURVEYFREQ</h2>
-<p>PROC SURVEYFREQ wird verwendet, um aus Befragungsdaten Häufigkeits- und Kreuztabellen zu produzieren. Die Ergebnisse beinhalten Populationstotale und Populationsanteile. Ausserdem können die dazugehörigen Standardfehler, Konfidenzintervalle und Variationskoeffizienten ausgegeben werden.</p>
+<p>PROC SURVEYFREQ wird verwendet, um aus Stichprobendaten Häufigkeits- und Kreuztabellen zu produzieren. Die Ergebnisse beinhalten Populationstotale und Populationsanteile. Ausserdem können die dazugehörigen Standardfehler, Konfidenzintervalle und Variationskoeffizienten ausgegeben werden.</p>
 <blockquote>
 <p>proc surveyfreq data=survey_data total=plan_data;<br />
 strata schichtungsvariable;<br />
@@ -221,7 +225,17 @@ ods output crosstabs=alter_amstat;
 run;</code><br />
 <img alt="" src="img/survey8.png" />  </p>
 </li>
-</ul></div>
+</ul>
+<h2 id="proc-surveymeans">PROC SURVEYMEANS</h2>
+<p>PROC SURVEYMEANS funktioniert sehr ähnlich wie PROC SURVEYFREQ. Es ermöglicht die Berechnung diverser Statistiken wie bspw. den Mittelwert oder den Median für Stichprobendaten.  </p>
+<p><code>proc surveymeans data=am_status;
+format Arbeitsmarktstatus fmt_amstatus.;
+var Alter;
+weight Gewicht;
+domain Arbeitsmarktstatus;
+ods output Statistics=alter;
+run;</code></p>
+<p><img alt="" src="img/survey9.png" /></p></div>
             </div>
         </div>
 
