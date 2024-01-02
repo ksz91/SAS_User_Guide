@@ -259,27 +259,27 @@ run; </p>
 <p>Inner Join:<br />
 <code>data gewicht_groesse;
 merge gewicht (in=in1) groesse (in=in2);
-by Name Alter;
+by name alter;
 if in1 and in2;
 run;</code>  </p>
 <p>Nach dem gleichen Prinzip können auch der Left Join und der Right Join repliziert werden. Für den Left Join braucht es das IF-Statement <code>if in1;</code>. Damit werden nur die Beobachtungen ausgewählt, welche im Datensatz <em>gewicht</em> vorkommen. Für den Right Join braucht es das IF-Statement <code>if in2;</code>. Dieses wählt nur diejenigen Beobachtungen aus, welche im Datensatz <em>groesse</em> vorkommen.</p>
 <p>Left Join:<br />
 <code>data gewicht_groesse;
 merge gewicht (in=in1) groesse (in=in2);
-by Name Alter;
+by name alter;
 if in1;
 run;</code> </p>
 <p>Right Join:<br />
 <code>data gewicht_groesse;
 merge gewicht (in=in1) groesse (in=in2);
-by Name Alter;
+by name alter;
 if in2;
 run;</code></p>
 <p>Der Full Outer Join kann entweder mit dem IF-Statement <code>if in1 or in2;</code> repliziert werden oder indem das IF-Statement einfach weggelassen wird.  </p>
 <p>Full Outer Join:<br />
 <code>data gewicht_groesse;
 merge gewicht (in=in1) groesse (in=in2);
-by Name Alter;
+by name alter;
 if in1 or in2;
 run;</code> </p>
 <hr /></div>
