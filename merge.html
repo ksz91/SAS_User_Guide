@@ -136,6 +136,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#merge" class="nav-link">Merge</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -233,6 +237,51 @@ run;</code></p>
 <img alt="" src="img/merge25.png" /></p>
 <p>Hinweis: Bei den anderen Join-Arten reicht es, die Variablen Name und Alter aus einem der beiden Datensätze t1 oder t2 auszuwählen. Beim Full Outer Join funktioniert das nicht. Werden die Variablen aus t1 genommen, dann resultieren fehlende Werte bei derjenigen Beobachtung, die nur in t2 vorkommt und umgekehrt. Um sicherzugehen, dass die Variablen Name und Alter keine fehlenden Werte aufweisen, braucht es einen kleinen Umweg über die COALESCE-Funktion bzw. «Neue berechnete Spalte hinzufügen -&gt; Erweiterter Ausdruck»:
 <img alt="" src="img/merge26.png" /></p>
+<h2 id="merge">Merge</h2>
+<p>Eine Alternative zum Join mittels Abfrage ist ein MERGE-Statement in einem DATA STEP. Dazu müssen zuerst die beiden zu verbindenden Datensätze nach den by-Variablen sortiert werden.</p>
+<h4 id="syntax">Syntax</h4>
+<blockquote>
+<p>proc sort data = dataset1;<br />
+by var1 var2;<br />
+run;  </p>
+<p>proc sort data = dataset2;<br />
+by var1 var2;<br />
+run;  </p>
+<p>data new_dataset;<br />
+merge dataset1 dataset2;<br />
+by var1 var2;<br />
+run; </p>
+</blockquote>
+<p>Ohne weitere Spezifikation führt diese Syntax zu einem Full Outer Join (siehe Abschnitt <a href="merge.html#verschiedene-join-typen">Verschiedene Join-Typen</a>). Um den MERGE einzuschränken (bspw. auf einen Inner Join), braucht es ein IN-Statement.</p>
+<h4 id="in-statement">IN-Statement</h4>
+<p>Mit dem IN-Statement wird jedem Datensatz eine Art ID zugewiesen, die dann in einem IF-Statement verwendet werden kann. </p>
+<p>Beispiel: Um den Inner Join aus dem Abschnitt <a href="merge.html#verschiedene-join-typen">Verschiedene Join-Typen</a> zu replizieren, wird dem Datensatz <em>gewicht</em> die ID «in1» und dem Datensatz <em>groesse</em> die ID «in2» zugewiesen. Das IF-Statement <code>if in1 and in2;</code> wählt alle Beobachtungen aus, welche sowohl im Datensatz <em>gewicht</em> als auch im Datensatz <em>groesse</em> vorkommen.</p>
+<p>Inner Join:<br />
+<code>data gewicht_groesse;
+merge gewicht (in=in1) groesse (in=in2);
+by Name Alter;
+if in1 and in2;
+run;</code>  </p>
+<p>Nach dem gleichen Prinzip können auch der Left Join und der Right Join repliziert werden. Für den Left Join braucht es das IF-Statement <code>if in1;</code>. Damit werden nur die Beobachtungen ausgewählt, welche im Datensatz <em>gewicht</em> vorkommen. Für den Right Join braucht es das IF-Statement <code>if in2;</code>. Dieses wählt nur diejenigen Beobachtungen aus, welche im Datensatz <em>groesse</em> vorkommen.</p>
+<p>Left Join:<br />
+<code>data gewicht_groesse;
+merge gewicht (in=in1) groesse (in=in2);
+by Name Alter;
+if in1;
+run;</code> </p>
+<p>Right Join:<br />
+<code>data gewicht_groesse;
+merge gewicht (in=in1) groesse (in=in2);
+by Name Alter;
+if in2;
+run;</code></p>
+<p>Der Full Outer Join kann entweder mit dem IF-Statement <code>if in1 or in2;</code> repliziert werden oder indem das IF-Statement einfach weggelassen wird.  </p>
+<p>Full Outer Join:<br />
+<code>data gewicht_groesse;
+merge gewicht (in=in1) groesse (in=in2);
+by Name Alter;
+if in1 or in2;
+run;</code> </p>
 <hr /></div>
             </div>
         </div>
