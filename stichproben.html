@@ -141,6 +141,7 @@
 
 <h1 id="stichprobenanalyse">Stichprobenanalyse</h1>
 <hr />
+<p>SAS bietet diverse Möglichkeiten zur Analyse von Stichprobendaten. Im Folgenden wir eine kurze Einführung in die beiden wichtigsten Prozeduren PROC SURVEYFREQ und PROC SURVEYMEANS gegeben.</p>
 <h2 id="proc-surveyfreq">PROC SURVEYFREQ</h2>
 <p>PROC SURVEYFREQ wird verwendet, um aus Stichprobendaten Häufigkeits- und Kreuztabellen zu produzieren. Die Ergebnisse beinhalten Populationstotale und Populationsanteile. Ausserdem können die dazugehörigen Standardfehler, Konfidenzintervalle und Variationskoeffizienten ausgegeben werden.</p>
 <blockquote>
@@ -181,7 +182,7 @@ ods output crosstabs=alter_amstat;
 run;</code>  </p>
 <p><img alt="" src="img/survey3.png" /></p>
 <h4 id="optionen">Optionen</h4>
-<p>Es gibt nun noch diverse Möglichkeiten, diesen Output zu verbessern bzw. den jeweiligen Bedürfnissen anzupassen.</p>
+<p>Es gibt nun noch diverse Möglichkeiten, diesen Output zu verbessern bzw. den jeweiligen Bedürfnissen anzupassen:</p>
 <ul>
 <li>
 <p>Die Spalte <em>Percent</em> gibt den Anteil der Personen an, auf den die jeweilige Kombination von Alter und Arbeitsmarktstatus zutrifft. Bspw. sind 20.7% aller Personen 15-24 jährige Erwerbstätige. Wahrscheinlich interessiert hier aber mehr, welcher Anteil der 15 bis 24-Jährigen erwerbstätig sind. Dies kann mit der Option <strong>row</strong> erreicht werden.  </p>
@@ -226,16 +227,26 @@ run;</code><br />
 <img alt="" src="img/survey8.png" />  </p>
 </li>
 </ul>
+<p>Weitere nützliche Informationen zu PROC SURVEYFREQ sind in der <a href="https://documentation.sas.com/doc/en/pgmsascdc/9.4_3.4/statug/statug_surveyfreq_toc.htm">SAS-Dokumentation</a> zu finden.</p>
 <h2 id="proc-surveymeans">PROC SURVEYMEANS</h2>
 <p>PROC SURVEYMEANS funktioniert sehr ähnlich wie PROC SURVEYFREQ. Es ermöglicht die Berechnung diverser Statistiken wie bspw. den Mittelwert oder den Median für Stichprobendaten.  </p>
-<p><code>proc surveymeans data=am_status;
+<p>Wir betrachten wiederum das Beispiel aus dem Abschnitt zu <a href="stichproben.html#proc-surveyfreq">PROC SURVEYFREQ</a>. Ziel ist es, das durchschnittliche Alter nach Arbeitsmarktstatus zu berechnen.</p>
+<p>Der dazu benötigte Code unterscheidet sich im Wesentlichen in zwei Punkten vom PROC SURVEYFREQ:  </p>
+<ul>
+<li>Es gibt kein TABLE-Statement sondern stattdessen ein VAR- und ein DOMAIN-Statement. Mit dem VAR-Statement wird definiert, welche Variable analysiert werden soll, d.h. von welcher Variable bspw. der Mittelwert bestimmt werden soll. Mit dem DOMAIN-Statement wird festgelegt, für welche Subpopulationen die Analyse durchgeführt wird, in diesem Fall nach Arbeitsmarktstatus.</li>
+<li>Beim ODS OUTPUT-Statement wird anstatt <em>Oneway</em> oder <em>Crosstabs</em> das Keyword <em>Statistics</em> verwendet.</li>
+</ul>
+<p><code>proc surveymeans data=am_status total=plan;
 format Arbeitsmarktstatus fmt_amstatus.;
 var Alter;
 weight Gewicht;
 domain Arbeitsmarktstatus;
 ods output Statistics=alter;
 run;</code></p>
-<p><img alt="" src="img/survey9.png" /></p></div>
+<p><img alt="" src="img/survey9.png" /></p>
+<h4 id="weitere-statistiken">Weitere Statistiken</h4>
+<p>Per Default berechnet PROC SURVEYMEANS den Mittelwert. Es gibt aber diverse weitere Statistiken, die berechnet werden können. Die SAS-Dokumentation gibt einen <a href="https://documentation.sas.com/doc/en/statcdc/14.2/statug/statug_surveymeans_syntax01.htm#statug.surveymeans.smeanskeys">Überblick</a>.  </p>
+<p>Ausserdem enthält die <a href="https://documentation.sas.com/doc/en/pgmsascdc/9.4_3.4/statug/statug_surveymeans_toc.htm">SAS-Dokumentation</a> weitere nützliche Informationen zu PROC SURVEYMEANS.</p></div>
             </div>
         </div>
 
