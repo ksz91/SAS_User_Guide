@@ -124,6 +124,10 @@
             
             <li class="nav-item" data-level="1"><a href="#tabellen-und-reports" class="nav-link">Tabellen und Reports</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#zusammenfassungstabelle" class="nav-link">Zusammenfassungstabelle</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -133,7 +137,46 @@
 
 <h1 id="tabellen-und-reports">Tabellen und Reports</h1>
 <hr />
-<p>...Inhalt folgt...</p></div>
+<h2 id="zusammenfassungstabelle">Zusammenfassungstabelle</h2>
+<p>Mit der Anwendungsroutine <em>Zusammenfassungstabelle</em> lassen sich Kreuztabellen erstellen. </p>
+<p>Beispiel: Ein Datensatz enthält die Anzahl Personen nach Geschlecht, Herkunft und Altersgruppe.
+<img alt="" src="img/report1.png" />  </p>
+<h4 id="zusammenfassungstabellen-erstellen">Zusammenfassungstabellen erstellen</h4>
+<p>Bei der ersten Anwendung muss die Anwendungsroutine <em>Zusammenfassungstabelle</em> zuerst gesucht werden (siehe <a href="http://127.0.0.1:8000/neweg.html#anwendungsroutinen">Anleitung</a>). Wurde sie schon verwendet oder sogar in den Favoriten gespeichert, dann ist sie direkt über die Leiste «Anwendungsroutinen» abrufbar.<br />
+<img alt="" src="img/report2.png" /></p>
+<p>Als erstes werden die Variablen im Menüpunkt «Daten» den entsprechenden Rollen zugeordnet.</p>
+<ul>
+<li><code>Analysevariablen:</code> Diese Variablen werden analysiert, bspw. gezählt, aufsummiert oder gemittelt. In diesem Beispiel wird die Variable <em>Anzahl</em> aufsummiert.</li>
+<li><code>Klassifizierungsvariablen:</code> Nach diesen Variablen wird die Analysevariable ausgewertet. In diesem Beispiel wird die Summe der Variable <em>Anzahl</em> nach den Variablen <em>Geschlecht</em> und <em>Altersgruppe</em> gebildet.</li>
+<li><code>Seiten:</code> Pro Ausprägung dieser Variable wird eine Kreuztabelle generiert. Diese Variable wird automatisch auch unter Klassifizierungsvariablen gelistet. In diesem Beispiel wird pro Ausprägung der Variable <em>Herkunft</em> eine Tabelle erstellt.  </li>
+</ul>
+<p><img alt="" src="img/report3.png" />  </p>
+<p>Danach wird im Menüpunkt «Zusammenfassungstabellen» die Struktur der Kreuztabelle mittels Drag and Drop festgelegt.<br />
+<img alt="" src="img/report4.png" />  </p>
+<p>Im Menüpunkt «Ergebnisse» kann ein Häkchen gesetzt werden, wenn die Ergebnisse der Zusammenfassungstabelle auch in einem SAS-Datensatz gespeichert werden soll.  </p>
+<p>Im Menüpunkt «Titel» können ein Titel (bspw. Anzahl Personen nach Geschlecht, Altersgruppe und Herkunft) und eine Fussnote (in diesem Beispiel wird die Default-Fussnote verwendet) für die Tabelle definiert werden.</p>
+<p><img alt="" src="img/report5.png" />  </p>
+<h4 id="zusammenfassungstabellen-optimieren">Zusammenfassungstabellen optimieren</h4>
+<p>Diese Tabellen können nun noch verschönert werden. Bspw. stören die Etiketten «Geschlecht», «Altersgruppen» und «Anzahl» sowie das Keyword <em>Sum</em>. Zudem wäre es schöner, wenn die Spalten zum Geschlecht beschriftet wären, anstatt nur den numerischen Wert der Variable zu enthalten. Die zwei Nachkommastellen sind zudem nicht sinnvoll, da es sich um die Anzahl Personen handelt.</p>
+<ul>
+<li>Etiketten entfernen:<br />
+    Rechtsklick auf die jeweilige Überschrift -&gt; Überschrifteneigenschaften -&gt; Text bei <em>Etikett:</em> löschen<br />
+<img alt="" src="img/report6.png" /> 
+    <img alt="" src="img/report7.png" /><br />
+    Die resultierende Kreuztabelle enthält keine Etiketten mehr und ist nun deutlich übersichtlicher. Der Einfachheit halber wird im Folgenden nur noch die Tabelle mit Herkunft «Ausland» gezeigt.<br />
+<img alt="" src="img/report8.png" />  </li>
+<li>Box beschriften:<br />
+    Die leere Zelle oben links (Box) lässt sich ebenfalls beschriften.<br />
+    Rechtsklick auf den grauen Bereich der Tabelle -&gt; Rahmenbereichseigenschaften -&gt; Etikett -&gt; Folgenden Text verwenden<br />
+<img alt="" src="img/report9.png" /><br />
+<img alt="" src="img/report10.png" /><br />
+    Die resultierende Tabelle sieht folgendermassen aus:<br />
+<img alt="" src="img/report11.png" />  </li>
+<li>Formate anwenden:<br />
+    Die entsprechende Klassifizierungsvariable anwählen und rechts unter <em>Überschriftformat</em> das <a href="formate.html">benutzerdefinierte Format</a> auswählen.<br />
+<img alt="" src="img/report12.png" /><br />
+    Benutzerdefinierte Formate können auch verwendet werden, um in Zusammenfassungstabellen zu gruppieren (<a href="formate.html#gruppieren-mittels-format">Anleitung</a>), zu sortieren (<a href="formate.html#sortieren-mittels-format">Anleitung</a>) oder Totale bzw. Subtotale zu bilden (<a href="formate.html#totale-und-subtotale-mittels-format">Anleitung</a>).  </li>
+</ul></div>
             </div>
         </div>
 
