@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Stichprobenanalyse - SAS User Guide</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="css/extra.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">SAS User Guide</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="index.html" class="nav-link">Übersicht</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Daten weiterverarbeiten <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="formate.html" class="dropdown-item">Benutzerdefinierte Formate</a>
+</li>
+                                    
+<li>
+    <a href="transp.html" class="dropdown-item">Transponieren</a>
+</li>
+                                    
+<li>
+    <a href="merge.html" class="dropdown-item">Datensätze verbinden</a>
+</li>
+                                    
+<li>
+    <a href="reports.html" class="dropdown-item">Tabellen und Reports</a>
+</li>
+                                    
+<li>
+    <a href="stichproben.html" class="dropdown-item active">Stichprobenanalyse</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="export.html" class="nav-link">Daten exportieren</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Spezialthemen <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="server.html" class="dropdown-item">Server-Migration</a>
+</li>
+                                    
+<li>
+    <a href="neweg.html" class="dropdown-item">Enterprise Guide 8.3</a>
+</li>
+                                    
+<li>
+    <a href="big.html" class="dropdown-item">Grosse Datenmengen</a>
+</li>
+                                    
+<li>
+    <a href="rawdata.html" class="dropdown-item">Neue Rohdatenablage</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="code.html" class="nav-link">Nützlicher Code</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="reports.html" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="export.html" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#stichprobenanalyse" class="nav-link">Stichprobenanalyse</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#proc-surveyfreq" class="nav-link">PROC SURVEYFREQ</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#proc-surveymeans" class="nav-link">PROC SURVEYMEANS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="stichprobenanalyse">Stichprobenanalyse</h1>
+<hr />
+<p>SAS bietet diverse Möglichkeiten zur Analyse von Stichprobendaten. Im Folgenden wird eine kurze Einführung in die beiden wichtigsten Prozeduren PROC SURVEYFREQ und PROC SURVEYMEANS gegeben. Die Optionen für diese beiden Prozeduren sind sehr vielfältig und hier im SAS User Guide längst nicht alle abgedeckt. Zudem gibt es weitere Prozeduren für die Stichprobenanalyse. Die <a href="https://documentation.sas.com/doc/en/pgmsascdc/9.4_3.4/statug/titlepage.htm">SAS-Dokumentation</a> liefert weiterführende Informationen zu diesem Thema.</p>
+<h2 id="proc-surveyfreq">PROC SURVEYFREQ</h2>
+<p>PROC SURVEYFREQ wird verwendet, um aus Stichprobendaten Häufigkeits- und Kreuztabellen zu produzieren. Die Ergebnisse beinhalten Populationstotale und Populationsanteile. Ausserdem können die dazugehörigen Standardfehler, Konfidenzintervalle und Variationskoeffizienten ausgegeben werden.</p>
+<blockquote>
+<p>proc surveyfreq data=survey_data total=plan_data;<br />
+strata schichtungsvariable;<br />
+weight gewichtungsvariable;<br />
+table var1*var2;<br />
+ods output crosstabs = output_name;<br />
+run;  </p>
+</blockquote>
+<h4 id="beispiel">Beispiel</h4>
+<p>Ein Datensatz enthält Angaben zum Alter und Arbeitsmarktstatus der Zielpersonen. Es handelt sich um Befragungsdaten, weshalb jeder Zielperson auch ein Gewicht zugeordnet ist.  </p>
+<p>Hinweis: Der Datensatz wäre viel zu klein, um zuverlässige Schätzungen bzw. Hochrechnungen zu machen. Es handelt sich um ein rein fiktives Beispiel zur Veranschaulichung der Prozedur.</p>
+<p><img alt="" src="img/survey1.png" /></p>
+<h4 id="einwegtabelle">Einwegtabelle</h4>
+<p>Mit einem PROC SURVEYFREQ lassen sich die gewichteten Häufigkeiten und Anteile nach Arbeitsmarktstatus berechnen.</p>
+<p><code>proc surveyfreq data=am_status total=plan;  
+format Arbeitsmarktstatus fmt_amstatus.;  
+weight Gewicht;  
+table Arbeitsmarktstatus;  
+ods output oneway=amstatus;  
+run;</code></p>
+<ul>
+<li><code>data</code>: Der Datensatz mit den Stichprobendaten.</li>
+<li><code>total</code>: Ein Datensatz, welcher die Populationstotale enthält. Soll bspw. eine Hochrechnung für die gesamte Bevölkerung des Kantons Basel-Stadt gemacht werden, enthält der Datensatz die Anzahl Einwohnerinnen und Einwohner. Die Variable mit dem Total muss <em>_TOTAL_</em> genannt werden. Dieses Total wird lediglich für die Berechnung der Standardfehler verwendet. Dabei kommt die sogenannte Endlichkeitskorrektur zur Anwendung.</li>
+<li><code>weight</code>: Die Gewichtungsvariable sorgt für die Repräsentativität der Ergebnisse.</li>
+<li><code>table</code>: Diese Variable soll ausgewertet werden.</li>
+<li><code>ods output</code>: Nötig, falls ein SAS-Datensatz generiert werden soll. Bei Einwegtabellen wird das Keyword <em>oneway</em> verwendet, bei Kreuztabellen <em>crosstabs</em>.</li>
+</ul>
+<p><img alt="" src="img/survey2.png" /></p>
+<h4 id="kreuztabelle">Kreuztabelle</h4>
+<p>Mit einem PROC SURVEYFREQ lassen sich auch die gewichteten Häufigkeiten und Anteile nach Arbeitsmarktstatus und Alter berechnen.  </p>
+<p><code>proc surveyfreq data=am_status total=plan;  
+format Alter fmt_alter. Arbeitsmarktstatus fmt_amstatus.;  
+weight Gewicht;  
+table Alter*Arbeitsmarktstatus;  
+ods output crosstabs=alter_amstat;  
+run;</code>  </p>
+<p><img alt="" src="img/survey3.png" /></p>
+<h4 id="optionen">Optionen</h4>
+<p>Es gibt nun noch diverse Möglichkeiten, diesen Output zu verbessern bzw. den jeweiligen Bedürfnissen anzupassen:</p>
+<ul>
+<li>
+<p>Die Spalte <em>Percent</em> gibt den Anteil der Personen an, auf den die jeweilige Kombination von Alter und Arbeitsmarktstatus zutrifft. Bspw. sind 4,1% aller Personen 15 bis 24-jährige Erwerbstätige. Wahrscheinlich interessiert hier aber mehr, welcher Anteil der 15 bis 24-Jährigen erwerbstätig sind. Dies kann mit der Option <strong>row</strong> erreicht werden.  </p>
+<p><code>proc surveyfreq data=am_status total=plan;  
+format Alter fmt_alter. Arbeitsmarktstatus fmt_amstatus.;  
+weight Gewicht;  
+table Alter*Arbeitsmarktstatus / row;  
+ods output crosstabs=alter_amstat;  
+run;</code><br />
+<img alt="" src="img/survey4.png" /><br />
+Nun gibt die Spalte <em>Row Percent</em> an, dass 34,6% der 15 bis 24 Jährigen erwerbstätig sind und 65,4% Nichterwerbspersonen.</p>
+</li>
+<li>
+<p>Wenn nur die Anteile interessieren und nicht die Totale, dann können die Totale mit der Option <strong>nototal</strong> ausgeblendet werden. </p>
+<p><code>proc surveyfreq data=am_status total=plan;  
+format Alter fmt_alter. Arbeitsmarktstatus fmt_amstatus.;  
+weight Gewicht;  
+table Alter*Arbeitsmarktstatus / row nototal;  
+ods output crosstabs=alter_amstat;  
+run;</code><br />
+<img alt="" src="img/survey5.png" /></p>
+</li>
+<li>
+<p>Weiter lassen sich Konfidenzintervalle und Variationskoeffizienten berechnen. Die Optionen <strong>cl</strong> bzw. <strong>clwt</strong> fügen die Konfidenzinvervalle für die gewichteten Anteile bzw. Häufigkeiten hinzu. Die Option <strong>cv</strong> ergänzt die Auswertung um die Variationskoeffizienten.    </p>
+<p><code>proc surveyfreq data=am_status total=plan;  
+format Alter fmt_alter. Arbeitsmarktstatus fmt_amstatus.;  
+weight Gewicht;  
+table Alter*Arbeitsmarktstatus / row nototal cl clwt cv;  
+ods output crosstabs=alter_amstat;  
+run;</code><br />
+<img alt="" src="img/survey7.png" /><br />
+Hinweis: Die Konfidenzintervalle und Variationskoeffizienten sind sehr gross, weil die Stichprobe viel zu klein für zuverlässige Ergebnisse ist.</p>
+</li>
+<li>
+<p>Wenn nur die gewichteten Häufigkeiten und nicht die Anteile interessieren, kann die Option <strong>nopercent</strong> verwendet werden.  </p>
+<p><code>proc surveyfreq data=am_status total=plan;  
+format Alter fmt_alter. Arbeitsmarktstatus fmt_amstatus.;  
+weight Gewicht;  
+table Alter*Arbeitsmarktstatus / nopercent nototal clwt;  
+ods output crosstabs=alter_amstat;  
+run;</code><br />
+<img alt="" src="img/survey8.png" />  </p>
+</li>
+</ul>
+<p>Weitere nützliche Informationen zu PROC SURVEYFREQ sind in der <a href="https://documentation.sas.com/doc/en/pgmsascdc/9.4_3.4/statug/statug_surveyfreq_toc.htm">SAS-Dokumentation</a> zu finden.</p>
+<h2 id="proc-surveymeans">PROC SURVEYMEANS</h2>
+<p>PROC SURVEYMEANS funktioniert sehr ähnlich wie PROC SURVEYFREQ. Es ermöglicht die Berechnung diverser Statistiken wie bspw. den Mittelwert oder den Median für Stichprobendaten.  </p>
+<p>Wir betrachten wiederum das Beispiel aus dem Abschnitt zu <a href="stichproben.html#proc-surveyfreq">PROC SURVEYFREQ</a>. Ziel ist es, das durchschnittliche Alter nach Arbeitsmarktstatus zu berechnen.</p>
+<p>Der dazu benötigte Code unterscheidet sich im Wesentlichen in zwei Punkten von PROC SURVEYFREQ:  </p>
+<ul>
+<li>Es gibt kein TABLE-Statement sondern stattdessen ein VAR- und ein DOMAIN-Statement. Mit dem VAR-Statement wird definiert, welche Variable analysiert werden soll, d.h. von welcher Variable bspw. der Mittelwert bestimmt werden soll. Mit dem DOMAIN-Statement wird festgelegt, für welche Subpopulationen die Analyse durchgeführt wird, in diesem Fall nach Arbeitsmarktstatus.</li>
+<li>Beim ODS OUTPUT-Statement wird anstatt <em>Oneway</em> oder <em>Crosstabs</em> das Keyword <em>Statistics</em> verwendet.</li>
+</ul>
+<p><code>proc surveymeans data=am_status total=plan;
+format Arbeitsmarktstatus fmt_amstatus.;
+var Alter;
+weight Gewicht;
+domain Arbeitsmarktstatus;
+ods output Statistics=alter;
+run;</code></p>
+<p><img alt="" src="img/survey9.png" /></p>
+<h4 id="weitere-statistiken">Weitere Statistiken</h4>
+<p>Per Default berechnet PROC SURVEYMEANS den Mittelwert. Es gibt aber diverse weitere Statistiken, die berechnet werden können. Die SAS-Dokumentation gibt einen <a href="https://documentation.sas.com/doc/en/statcdc/14.2/statug/statug_surveymeans_syntax01.htm#statug.surveymeans.smeanskeys">Überblick</a>.  </p>
+<p>Ausserdem enthält die <a href="https://documentation.sas.com/doc/en/pgmsascdc/9.4_3.4/statug/statug_surveymeans_toc.htm">SAS-Dokumentation</a> weitere nützliche Informationen zu PROC SURVEYMEANS.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

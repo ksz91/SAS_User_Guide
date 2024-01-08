@@ -4,6 +4,9 @@ nav:
     - Daten weiterverarbeiten:
         - 'Benutzerdefinierte Formate': 'formate.md'
         - 'Transponieren': 'transp.md'
+        - 'Datensätze verbinden': 'merge.md'
+        - 'Tabellen und Reports': 'reports.md'
+        - 'Stichprobenanalyse': 'stichproben.md'
     - Daten exportieren: 'export.md'
     - Spezialthemen:
         - 'Server-Migration': 'server.md'
@@ -17,3 +20,8 @@ theme:
     //nav_style: dark
 extra_css: [css/extra.css]
 use_directory_urls: false
+markdown_extensions:
+   - attr_list
+   - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg

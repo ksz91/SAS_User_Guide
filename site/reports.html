@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Tabellen und Reports - SAS User Guide</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="css/extra.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">SAS User Guide</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="index.html" class="nav-link">Übersicht</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Daten weiterverarbeiten <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="formate.html" class="dropdown-item">Benutzerdefinierte Formate</a>
+</li>
+                                    
+<li>
+    <a href="transp.html" class="dropdown-item">Transponieren</a>
+</li>
+                                    
+<li>
+    <a href="merge.html" class="dropdown-item">Datensätze verbinden</a>
+</li>
+                                    
+<li>
+    <a href="reports.html" class="dropdown-item active">Tabellen und Reports</a>
+</li>
+                                    
+<li>
+    <a href="stichproben.html" class="dropdown-item">Stichprobenanalyse</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="export.html" class="nav-link">Daten exportieren</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Spezialthemen <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="server.html" class="dropdown-item">Server-Migration</a>
+</li>
+                                    
+<li>
+    <a href="neweg.html" class="dropdown-item">Enterprise Guide 8.3</a>
+</li>
+                                    
+<li>
+    <a href="big.html" class="dropdown-item">Grosse Datenmengen</a>
+</li>
+                                    
+<li>
+    <a href="rawdata.html" class="dropdown-item">Neue Rohdatenablage</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="code.html" class="nav-link">Nützlicher Code</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="merge.html" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="stichproben.html" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#tabellen-und-reports" class="nav-link">Tabellen und Reports</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#zusammenfassungstabelle" class="nav-link">Zusammenfassungstabelle</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#proc-print" class="nav-link">PROC PRINT</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="tabellen-und-reports">Tabellen und Reports</h1>
+<hr />
+<h2 id="zusammenfassungstabelle">Zusammenfassungstabelle</h2>
+<p>Mit der Anwendungsroutine <em>Zusammenfassungstabelle</em> lassen sich Kreuztabellen erstellen. </p>
+<p>Beispiel: Ein Datensatz enthält die Anzahl Personen nach Geschlecht, Herkunft und Altersgruppe.
+<img alt="" src="img/report1.png" />  </p>
+<h4 id="zusammenfassungstabellen-erstellen">Zusammenfassungstabellen erstellen</h4>
+<p>Bei der ersten Anwendung muss die Anwendungsroutine <em>Zusammenfassungstabelle</em> zuerst gesucht werden (siehe <a href="http://127.0.0.1:8000/neweg.html#anwendungsroutinen">Anleitung</a>). Wurde sie schon verwendet oder sogar in den Favoriten gespeichert, dann ist sie direkt über die Leiste «Anwendungsroutinen» abrufbar.<br />
+<img alt="" src="img/report2.png" /></p>
+<p>Als erstes werden die Variablen im Menüpunkt «Daten» den entsprechenden Rollen zugeordnet.</p>
+<ul>
+<li><code>Analysevariablen:</code> Diese Variablen werden analysiert, bspw. gezählt, aufsummiert oder gemittelt. In diesem Beispiel wird die Variable <em>Anzahl</em> aufsummiert.</li>
+<li><code>Klassifizierungsvariablen:</code> Nach diesen Variablen wird die Analysevariable ausgewertet. In diesem Beispiel wird die Summe der Variable <em>Anzahl</em> nach den Variablen <em>Geschlecht</em> und <em>Altersgruppe</em> gebildet.</li>
+<li><code>Seiten:</code> Pro Ausprägung dieser Variable wird eine Kreuztabelle generiert. Diese Variable wird automatisch auch unter Klassifizierungsvariablen gelistet. In diesem Beispiel wird pro Ausprägung der Variable <em>Herkunft</em> eine Tabelle erstellt.  </li>
+</ul>
+<p><img alt="" src="img/report3.png" />  </p>
+<p>Danach wird im Menüpunkt «Zusammenfassungstabellen» die Struktur der Kreuztabelle mittels Drag and Drop festgelegt.<br />
+<img alt="" src="img/report4.png" />  </p>
+<p>Im Menüpunkt «Ergebnisse» kann ein Häkchen gesetzt werden, wenn die Ergebnisse der Zusammenfassungstabelle auch in einem SAS-Datensatz gespeichert werden soll.  </p>
+<p>Im Menüpunkt «Titel» können ein Titel (bspw. Anzahl Personen nach Geschlecht, Altersgruppe und Herkunft) und eine Fussnote (in diesem Beispiel wird die Default-Fussnote verwendet) für die Tabelle definiert werden.</p>
+<p><img alt="" src="img/report5.png" />  </p>
+<h4 id="zusammenfassungstabellen-optimieren">Zusammenfassungstabellen optimieren</h4>
+<p>Diese Tabellen können nun noch verschönert werden. Bspw. stören die Etiketten «Geschlecht», «Altersgruppen» und «Anzahl» sowie das Keyword <em>Sum</em>. Zudem wäre es schöner, wenn die Spalten zum Geschlecht beschriftet wären, anstatt nur den numerischen Wert der Variable zu enthalten. Die zwei Nachkommastellen sind zudem nicht sinnvoll, da es sich um die Anzahl Personen handelt.</p>
+<ul>
+<li>Etiketten entfernen:<br />
+    Rechtsklick auf die jeweilige Überschrift -&gt; Überschrifteneigenschaften -&gt; Text bei <em>Etikett:</em> löschen<br />
+<img alt="" src="img/report6.png" /> 
+    <img alt="" src="img/report7.png" /><br />
+    Die resultierende Kreuztabelle enthält keine Etiketten mehr und ist nun deutlich übersichtlicher. Der Einfachheit halber wird im Folgenden nur noch die Tabelle mit Herkunft «Ausland» gezeigt.<br />
+<img alt="" src="img/report8.png" />  </li>
+<li>Box beschriften:<br />
+    Die leere Zelle oben links (Box) lässt sich ebenfalls beschriften.<br />
+    Rechtsklick auf den grauen Bereich der Tabelle -&gt; Rahmenbereichseigenschaften -&gt; Etikett -&gt; Folgenden Text verwenden<br />
+<img alt="" src="img/report9.png" /><br />
+<img alt="" src="img/report10.png" /><br />
+    Die resultierende Tabelle sieht folgendermassen aus:<br />
+<img alt="" src="img/report11.png" />  </li>
+<li>
+<p>Formate anwenden:<br />
+    Die entsprechende Klassifizierungsvariable anwählen und rechts unter <em>Überschriftformat</em> das <a href="formate.html">benutzerdefinierte Format</a> auswählen.<br />
+<img alt="" src="img/report12.png" /><br />
+    Die resultierende Tabelle sieht folgendermassen aus:<br />
+<img alt="" src="img/report13.png" /><br />
+    Benutzerdefinierte Formate können auch verwendet werden, um in Zusammenfassungstabellen zu gruppieren (<a href="formate.html#gruppieren-mittels-format">Anleitung</a>), zu sortieren (<a href="formate.html#sortieren-mittels-format">Anleitung</a>) oder Totale bzw. Subtotale zu bilden (<a href="formate.html#totale-und-subtotale-mittels-format">Anleitung</a>).  </p>
+</li>
+<li>
+<p>Anzahl Nachkommastellen definieren:<br />
+    Rechtsklick auf <em>Sum</em> -&gt; Datenwerteigenschaften -&gt; Ausgabeformat -&gt; bspw. BEST12.0<br />
+<img alt="" src="img/report14.png" /><br />
+<img alt="" src="img/report15.png" /><br />
+    Die resultierende Tabelle sieht folgendermassen aus:<br />
+<img alt="" src="img/report16.png" />   </p>
+</li>
+</ul>
+<h4 id="export-von-zusammenfassungstabellen">Export von Zusammenfassungstabellen</h4>
+<p>Beim Ausführen einer Zusammenfassungstabelle wird PROC TABULATE-Code generiert. Dieser kann nach Doppelklick auf die Zusammenfassungstabelle über den Reiter <em>Code</em> abgefragt werden.<br />
+<img alt="" src="img/report17.png" /><br />
+<img alt="" src="img/report18.png" /><br />
+Dieser Code kann nun kopiert werden (von PROC TABULATE bis RUN;) und bspw. mittels ODS Excel in ein Excel-File exportiert werden. Wie das funktioniert ist <a href="export.html#ods-excel">hier</a> beschrieben.  </p>
+<h2 id="proc-print">PROC PRINT</h2>
+<p>PROC Print ist die einfachste SAS-Prozedur zum Ausgeben von Datensätzen.  </p>
+<p>Beispiel: Ein Datensatz enthält die Anzahl Personen nach Altersgruppe und Geschlecht.<br />
+<img alt="" src="img/report19.png" />  </p>
+<p>Ohne weitere Spezifikation gibt PROC PRINT den Datensatz einfach so aus, wie er ist.  </p>
+<p><code>proc print data=work.person;
+run;</code>  </p>
+<p>Der resultierende HTML-Output sieht folgendermassen aus:<br />
+<img alt="" src="img/report20.png" />  </p>
+<h4 id="optionenargumente">Optionen/Argumente</h4>
+<ul>
+<li>
+<p><code>NOOBS:</code> PROC Print ergänzt automatisch eine Spalte, in der die Beobachtungen nummeriert werden. Diese kann mit der Option NOOBS unterdrückt werden.</p>
+<p><code>proc print data=work.person noobs;
+run;</code><br />
+<img alt="" src="img/report21.png" /> <br />
+Diese Form ist bspw. für das Erstellen von tsv-Dateien für Indikatoren hilfreich. Der PROC PRINT-Output kann dann mittels <a href="export.html#ods-excel">ODS EXCEL</a> exportiert werden.  </p>
+</li>
+<li>
+<p><code>LABEL:</code> PROC PRINT verwendet standardmässig die Variablennamen aus dem Datensatz. Es können aber auch alternative Spaltenbezeichnungen definiert werden.  </p>
+<p><code>proc print data=work.person noobs label;
+label Altersgruppe="Alter" Anzahl="Anzahl Personen";
+run;</code><br />
+<img alt="" src="img/report22.png" />   </p>
+</li>
+<li>
+<p><code>OBS:</code> Standardmässig werden alle Beobachtungen des Datensatzes ausgegeben. Mit der Option OBS kann die Anzahl Beobachtungen gewählt werden, die ausgegeben werden soll.  </p>
+<p><code>proc print data=work.person (obs=5) noobs;
+run;</code><br />
+<img alt="" src="img/report23.png" />  </p>
+</li>
+<li>
+<p><code>VAR:</code> Standardmässig werden alle Variablen des Datensatzes ausgegeben. Mit dem VAR-Statement können Variablen ausgewählt werden.  </p>
+<p><code>proc print data=work.person noobs;
+var altersgruppe geschlecht;
+run;</code><br />
+<img alt="" src="img/report24.png" />  </p>
+</li>
+<li>
+<p><code>BY:</code> Mit dem BY-Statement wird eine separate Tabelle für jede Ausprägung der BY-Variable produziert (Wichtig: Der Datensatz muss nach der BY-Variable sortiert sein).  </p>
+<p><code>proc print data=work.person noobs;
+by geschlecht;
+run;</code><br />
+<img alt="" src="img/report25.png" />    </p>
+</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

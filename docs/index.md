@@ -4,6 +4,20 @@
 <div class="row mb-3">
   <div class="col-sm-4">
     <div class="card">
+       <h3 class="card-header"><a href="formate.html">Eigene Formate</h3></a>
+      <div class="card-body">
+        <p class="card-text">
+            <ul style="margin:0;padding:0;list-style:none;">
+            <li>Gruppieren</li>
+            <li>Sortieren</li> 
+            <li>Totale und Subtotale</li> 
+             </ul> 
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
        <h3 class="card-header"><a href="transp.html">Transponieren</h3></a>
       <div class="card-body">
         <p class="card-text">
@@ -15,7 +29,49 @@
       </div>
     </div>
   </div>
+<div class="col-sm-4">
+    <div class="card">
+       <h3 class="card-header"><a href="merge.html">Datensätze verbinden</h3></a>
+      <div class="card-body">
+        <p class="card-text">
+            <ul style="margin:0;padding:0;list-style:none;">
+            <li>Append</li>
+            <li>Join mittels Abfrage</li>
+            <li>MERGE</li>
+             </ul> 
+        </p>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="row mb-3">
   <div class="col-sm-4">
+    <div class="card">
+       <h3 class="card-header"><a href="reports.html">Tabellen und Reports</h3></a>
+      <div class="card-body">
+        <p class="card-text">
+            <ul style="margin:0;padding:0;list-style:none;">
+            <li>Zusammenfassungstabelle</li>
+            <li>PROC PRINT</li> <br>
+             </ul> 
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+       <h3 class="card-header"><a href="stichproben.html">Stichprobenanalyse</h3></a>
+      <div class="card-body">
+        <p class="card-text">
+            <ul style="margin:0;padding:0;list-style:none;">
+            <li>PROC SURVEYFREQ</li>
+            <li>PROC SURVEYMEANS</li> <br>
+             </ul> 
+        </p>
+      </div>
+    </div>
+  </div>
+    <div class="col-sm-4">
     <div class="card">
        <h3 class="card-header"><a href="export.html" style="color:#00AA9E;">Daten exportieren</h3></a>
       <div class="card-body">
@@ -28,6 +84,8 @@
       </div>
     </div>
   </div>
+   </div>
+<div class="row mb-3">
   <div class="col-sm-4">
     <div class="card">
        <h3 class="card-header"><a href="code.html" style="color:#DC440E;">Nützlicher Code</h3></a>
@@ -41,9 +99,7 @@
       </div>
     </div>
   </div>
-  </div>
-<div class="row mb-3">
-<div class="col-sm-4">
+  <div class="col-sm-4">
     <div class="card">
        <h3 class="card-header"><a href="neweg.html" style="color:#923F8D;">SAS Enterprise Guide 8.3</h3></a>
       <div class="card-body">
@@ -70,6 +126,8 @@
       </div>
     </div>
   </div>
+</div>
+<div class="row mb-3">
     <div class="col-sm-4">
     <div class="card">
        <h3 class="card-header"><a href="big.html" style="color:#923F8D;">Grosse Datenmengen</h3></a>
@@ -83,9 +141,7 @@
         </p>
       </div>
     </div>
-  </div>
     </div>
-    <div class="row mb-3">
 <div class="col-sm-4">
     <div class="card">
        <h3 class="card-header"><a href="rawdata.html" style="color:#923F8D;">Neue Rohdatenablage</h3></a>
@@ -98,6 +154,6 @@
         </p>
       </div>
     </div>
+    </div>
   </div>
 </div>
-</div></div>

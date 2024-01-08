@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Datensätze verbinden - SAS User Guide</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="css/extra.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">SAS User Guide</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="index.html" class="nav-link">Übersicht</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Daten weiterverarbeiten <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="formate.html" class="dropdown-item">Benutzerdefinierte Formate</a>
+</li>
+                                    
+<li>
+    <a href="transp.html" class="dropdown-item">Transponieren</a>
+</li>
+                                    
+<li>
+    <a href="merge.html" class="dropdown-item active">Datensätze verbinden</a>
+</li>
+                                    
+<li>
+    <a href="reports.html" class="dropdown-item">Tabellen und Reports</a>
+</li>
+                                    
+<li>
+    <a href="stichproben.html" class="dropdown-item">Stichprobenanalyse</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="export.html" class="nav-link">Daten exportieren</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Spezialthemen <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="server.html" class="dropdown-item">Server-Migration</a>
+</li>
+                                    
+<li>
+    <a href="neweg.html" class="dropdown-item">Enterprise Guide 8.3</a>
+</li>
+                                    
+<li>
+    <a href="big.html" class="dropdown-item">Grosse Datenmengen</a>
+</li>
+                                    
+<li>
+    <a href="rawdata.html" class="dropdown-item">Neue Rohdatenablage</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="code.html" class="nav-link">Nützlicher Code</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="transp.html" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="reports.html" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#datensatze-verbinden" class="nav-link">Datensätze verbinden</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#datensatz-anhangen" class="nav-link">Datensatz anhängen</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#join-mittels-abfrage" class="nav-link">Join mittels Abfrage</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#verschiedene-join-typen" class="nav-link">Verschiedene Join-Typen</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#merge" class="nav-link">Merge</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="datensatze-verbinden">Datensätze verbinden</h1>
+<hr />
+<h2 id="datensatz-anhangen">Datensatz anhängen</h2>
+<p>Beispiel: Die Grössenangaben von Frauen und Männern sind in zwei separaten Datensätzen erfasst. Diese beiden Datensätze sollen zu einem Datensatz zusammengefasst werden, der die Daten für beide Geschlechter enthält.<br />
+<img alt="" src="img/merge1.png" />
+<img alt="" src="img/merge2.png" /> </p>
+<h4 id="anwendungsroutine-tabelle-anhangen">Anwendungsroutine <em>Tabelle anhängen</em></h4>
+<p>Für diesen Lösungsansatz wird einer der beiden Datensätze angewählt (einfacher Mausklick) und unter «Anwendungsroutinen -&gt; Durchsuchen -&gt; Daten» die Anwendungsroutine <em>Tabelle anhängen</em> ausgewählt.<br />
+<img alt="" src="img/merge3.png" /><br />
+<img alt="" src="img/merge4.png" /> </p>
+<p>Im sich öffnenden Fenster auf <em>Tabelle hinzufügen</em> klicken und den Datensatz auswählen, der angehängt werden soll, in diesem Fall «WEIBLICH». <br />
+<img alt="" src="img/merge5.png" />
+    &ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&rarr;</strong></span>&ensp;&ensp;
+<img alt="" src="img/merge7.png" />  </p>
+<p>Unter <em>Ergebnisse</em> kann ein Name für den neuen Datensatz gewählt werden, in diesem Fall «ALLE_PERSONEN»:<br />
+<img alt="" src="img/merge8.png" /></p>
+<p>Dann auf <em>Ausführen</em> klicken um die Tabelle anzuhängen und den neuen Datensatz zu generieren:<br />
+<img alt="" src="img/merge6.png" /></p>
+<h4 id="data-step">DATA STEP</h4>
+<p>Die einfachste Möglichkeit, einen Datensatz an einen anderen anzuhängen, ist ein DATA STEP.<br />
+Folgender Code hängt die Datensätze «MAENNLICH» und «WEIBLICH» untereinander und speichert das Ergebnis in einem neuen Datensatz «ALLE_PERSONEN»:</p>
+<p><code>data alle_personen;
+set maennlich weiblich;
+run;</code></p>
+<h4 id="proc-append">PROC APPEND</h4>
+<p>Eine weitere Möglichkeit, mittels Programmieren einen Datensatz an einen anderen anzuhängen, ist ein PROC  APPEND-Statement. Folgender Code hängt an den Datensatz «MAENNLICH» den Datensatz «WEIBLICH» an und überschreibt mit dem Ergebnis den urpsprünglichen Datensatz «MAENNLICH».</p>
+<p><code>proc append
+    base=maennlich
+    data=weiblich;
+run;</code></p>
+<h4 id="unterschiede-zwischen-den-losungsansatzen">Unterschiede zwischen den Lösungsansätzen</h4>
+<p>Die verschiedenen Lösungsansätze unterscheiden sich teilweise voneinander. Sehen wir uns an, was passiert, wenn die Variablennamen in den beiden Datensätzen nicht identisch geschrieben sind (bspw. Groesse und Grösse): </p>
+<ul>
+<li>
+<p>Sowohl die Anwendungsroutine <em>Tabelle anhängen</em> als auch der <em>DATA STEP</em> führen zu folgendem Ergebnis:<br />
+<img alt="" src="img/merge9.png" /></p>
+</li>
+<li>
+<p>Beim <em>PROC APPEND</em>-Statement hingegen werden die Datensätze nicht verbunden und es resultiert stattdessen eine Fehlermeldung:<br />
+<img alt="" src="img/merge10.png" />
+Soll der Append trotzdem durchgeführt werden, kann dies mit der Option <em>force</em> erreicht werden:</p>
+<p><code>proc append
+    base=maennlich
+    data=weiblich
+    force;
+run;</code></p>
+<p>So werden die Datensätze trotzdem aneinandergehängt. Allerdings werden nur Werte vom Datensatz «WEIBLICH» angehängt, wenn die Variablennamen auch im Datensatz «MAENNLICH» vorkommen:
+<img alt="" src="img/merge11.png" /></p>
+</li>
+</ul>
+<h2 id="join-mittels-abfrage">Join mittels Abfrage</h2>
+<p>Beispiel: Das Gewicht und die Grösse der Zielpersonen ist in zwei separaten Datensätzen erfasst. Nun soll ein neuer Datensatz erstellt werden, der beide Angaben enthält.</p>
+<p><img alt="" src="img/merge13.png" />
+<img alt="" src="img/merge14.png" /></p>
+<p>Dazu wird mittels rechtem Mausklick auf einen der beiden Datensätze und <em>Abfrage erstellen</em> eine Abfrage erstellt. Mit <em>Hinzufügen</em> wird der zweite Datensatz ergänzt. Nun können die gewünschten Variablen gewählt werden bzw. ins Fenster <em>Daten auswählen</em> gezogen werden. Hier die Variablen <em>Name</em> und <em>Alter</em> nur einmal auswählen (bspw. aus dem Datensatz t1).</p>
+<p><img alt="" src="img/merge15.png" /></p>
+<p>Danach muss unter <em>Tabellen joinen</em> definiert werden, anhand welcher Variablen der Join durchgeführt werden und um welche Art von Join (Inner Join, Left Join, Right Join etc.) es sich handeln soll. </p>
+<p><img alt="" src="img/merge16.png" /></p>
+<p>Es wird automatisch ein Join über die Variable <em>Name</em> vorgeschlagen. Da der Name «Sandra» zweimal vorkommt, wäre ein Join anhand des Namens nicht eindeutig. Deshalb wird der Join zusätzlich über die Variable <em>Alter</em> ausgeführt. Dazu auf die Variable <em>Alter</em> im linken Kästchen klicken (und halten) und den Cursor rüber zur Variable <em>Alter</em> im rechten Kästchen ziehen und loslassen.  </p>
+<p>Die Art des Joins spielt in diesem Beispiel keine Rolle, da in beiden Datensätze die gleichen Zielpersonen drin sind und es keine fehlenden Einträge gibt. Im nächsten Abschnitt wird näher auf den Unterschied zwischen den verschiedenen Join-Typen eingegangen.<br />
+<img alt="" src="img/merge17.png" /></p>
+<p>Es resultiert folgender Datensatz:<br />
+<img alt="" src="img/merge18.png" /></p>
+<h2 id="verschiedene-join-typen">Verschiedene Join-Typen</h2>
+<h4 id="inner-join">Inner Join</h4>
+<p>Der neu erzeugte Datensatz enthält nur die Beobachtungen, welche in beiden Datensätzen vorkommen.
+<img alt="" src="img/merge19.png" />
+<img alt="" src="img/merge20.png" /><br />
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&darr;</strong></span><br/> 
+<img alt="" src="img/merge21.png" />  </p>
+<h4 id="left-join">Left Join</h4>
+<p>Der neu erzeugte Datensatz enthält nur die Beobachtungen, welche im ersten Datensatz vorkommen. Diejenigen Beobachtungen, welche im zweiten Datensatz nicht vorkommen, weisen für die Variable <em>Grösse</em> einen fehlenden Wert auf.<br />
+<img alt="" src="img/merge19.png" />
+<img alt="" src="img/merge20.png" /><br />
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&darr;</strong></span><br/> 
+<img alt="" src="img/merge22.png" />  </p>
+<h4 id="right-join">Right Join</h4>
+<p>Der neu erzeugte Datensatz enthält nur die Beobachtungen, welche im zweiten Datensatz vorkommen. Diejenigen Beobachtungen, welche im ersten Datensatz nicht vorkommen, weisen für die Variable <em>Gewicht</em> einen fehlenden Wert auf.  <br />
+<img alt="" src="img/merge19.png" />
+<img alt="" src="img/merge20.png" /><br />
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&darr;</strong></span><br/> 
+<img alt="" src="img/merge23.png" /> </p>
+<h4 id="full-outer-join">Full Outer Join</h4>
+<p>Der neu erzeugte Datensatz enthält alle Beobachtungen, die in einem der beiden Datensätze vorkommen. 
+<img alt="" src="img/merge19.png" />
+<img alt="" src="img/merge20.png" /><br />
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span style="font-size:1.5em;"><strong>&darr;</strong></span><br/> 
+<img alt="" src="img/merge25.png" /></p>
+<p>Hinweis: Bei den anderen Join-Arten reicht es, die Variablen Name und Alter aus einem der beiden Datensätze t1 oder t2 auszuwählen. Beim Full Outer Join funktioniert das nicht. Werden die Variablen aus t1 genommen, dann resultieren fehlende Werte bei derjenigen Beobachtung, die nur in t2 vorkommt und umgekehrt. Um sicherzugehen, dass die Variablen Name und Alter keine fehlenden Werte aufweisen, braucht es einen kleinen Umweg über die COALESCE-Funktion bzw. «Neue berechnete Spalte hinzufügen -&gt; Erweiterter Ausdruck»:
+<img alt="" src="img/merge26.png" /></p>
+<h2 id="merge">Merge</h2>
+<p>Eine Alternative zum Join mittels Abfrage ist ein MERGE-Statement in einem DATA STEP. Dazu müssen zuerst die beiden zu verbindenden Datensätze nach den by-Variablen sortiert werden.</p>
+<h4 id="syntax">Syntax</h4>
+<blockquote>
+<p>proc sort data = dataset1;<br />
+by var1 var2;<br />
+run;  </p>
+<p>proc sort data = dataset2;<br />
+by var1 var2;<br />
+run;  </p>
+<p>data new_dataset;<br />
+merge dataset1 dataset2;<br />
+by var1 var2;<br />
+run; </p>
+</blockquote>
+<p>Ohne weitere Spezifikation führt diese Syntax zu einem Full Outer Join (siehe Abschnitt <a href="merge.html#verschiedene-join-typen">Verschiedene Join-Typen</a>). Um den MERGE einzuschränken (bspw. auf einen Inner Join), braucht es ein IN-Statement.</p>
+<h4 id="in-statement">IN-Statement</h4>
+<p>Mit dem IN-Statement wird jedem Datensatz eine Art ID zugewiesen, die dann in einem IF-Statement verwendet werden kann. </p>
+<p>Beispiel: Um den Inner Join aus dem Abschnitt <a href="merge.html#verschiedene-join-typen">Verschiedene Join-Typen</a> zu replizieren, wird dem Datensatz <em>gewicht</em> die ID «in1» und dem Datensatz <em>groesse</em> die ID «in2» zugewiesen. Das IF-Statement <code>if in1 and in2;</code> wählt alle Beobachtungen aus, welche sowohl im Datensatz <em>gewicht</em> als auch im Datensatz <em>groesse</em> vorkommen.</p>
+<p>Inner Join:<br />
+<code>data gewicht_groesse;
+merge gewicht (in=in1) groesse (in=in2);
+by name alter;
+if in1 and in2;
+run;</code>  </p>
+<p>Nach dem gleichen Prinzip können auch der Left Join und der Right Join repliziert werden. Für den Left Join braucht es das IF-Statement <code>if in1;</code>. Damit werden nur die Beobachtungen ausgewählt, welche im Datensatz <em>gewicht</em> vorkommen. Für den Right Join braucht es das IF-Statement <code>if in2;</code>. Dieses wählt nur diejenigen Beobachtungen aus, welche im Datensatz <em>groesse</em> vorkommen.</p>
+<p>Left Join:<br />
+<code>data gewicht_groesse;
+merge gewicht (in=in1) groesse (in=in2);
+by name alter;
+if in1;
+run;</code> </p>
+<p>Right Join:<br />
+<code>data gewicht_groesse;
+merge gewicht (in=in1) groesse (in=in2);
+by name alter;
+if in2;
+run;</code></p>
+<p>Der Full Outer Join kann entweder mit dem IF-Statement <code>if in1 or in2;</code> repliziert werden oder indem das IF-Statement einfach weggelassen wird.  </p>
+<p>Full Outer Join:<br />
+<code>data gewicht_groesse;
+merge gewicht (in=in1) groesse (in=in2);
+by name alter;
+if in1 or in2;
+run;</code> </p>
+<hr /></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
