@@ -128,6 +128,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#proc-print" class="nav-link">PROC PRINT</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -193,7 +197,53 @@
 <p>Beim Ausführen einer Zusammenfassungstabelle wird PROC TABULATE-Code generiert. Dieser kann nach Doppelklick auf die Zusammenfassungstabelle über den Reiter <em>Code</em> abgefragt werden.<br />
 <img alt="" src="img/report17.png" /><br />
 <img alt="" src="img/report18.png" /><br />
-Dieser Code kann nun kopiert werden (von PROC TABULATE bis RUN;) und bspw. mittels ODS Excel in ein Excel-File exportiert werden. Wie das funktioniert ist <a href="export.html#ods-excel">hier</a> beschrieben.</p></div>
+Dieser Code kann nun kopiert werden (von PROC TABULATE bis RUN;) und bspw. mittels ODS Excel in ein Excel-File exportiert werden. Wie das funktioniert ist <a href="export.html#ods-excel">hier</a> beschrieben.  </p>
+<h2 id="proc-print">PROC PRINT</h2>
+<p>PROC Print ist die einfachste SAS-Prozedur zum Ausgeben von Datensätzen.  </p>
+<p>Beispiel: Ein Datensatz enthält die Anzahl Personen nach Altersgruppe und Geschlecht.<br />
+<img alt="" src="img/report19.png" />  </p>
+<p>Ohne weitere Spezifikation gibt PROC PRINT den Datensatz einfach so aus, wie er ist.  </p>
+<p><code>proc print data=work.person;
+run;</code>  </p>
+<p>Der resultierende HTML-Output sieht folgendermassen aus:<br />
+<img alt="" src="img/report20.png" />  </p>
+<h4 id="optionenargumente">Optionen/Argumente</h4>
+<ul>
+<li>
+<p><code>NOOBS:</code> PROC Print ergänzt automatisch eine Spalte, in der die Beobachtungen nummeriert werden. Diese kann mit der Option NOOBS unterdrückt werden.</p>
+<p><code>proc print data=work.person noobs;
+run;</code><br />
+<img alt="" src="img/report21.png" /> <br />
+Diese Form ist bspw. für das Erstellen von tsv-Dateien für Indikatoren hilfreich. Der PROC PRINT-Output kann dann mittels <a href="export.html#ods-excel">ODS EXCEL</a> exportiert werden.  </p>
+</li>
+<li>
+<p><code>LABEL:</code> PROC PRINT verwendet standardmässig die Variablennamen aus dem Datensatz. Es können aber auch alternative Spaltenbezeichnungen definiert werden.  </p>
+<p><code>proc print data=work.person noobs label;
+label Altersgruppe="Alter" Anzahl="Anzahl Personen";
+run;</code><br />
+<img alt="" src="img/report22.png" />   </p>
+</li>
+<li>
+<p><code>OBS:</code> Standardmässig werden alle Beobachtungen des Datensatzes ausgegeben. Mit der Option OBS kann die Anzahl Beobachtungen gewählt werden, die ausgegeben werden soll.  </p>
+<p><code>proc print data=work.person (obs=5) noobs;
+run;</code><br />
+<img alt="" src="img/report23.png" />  </p>
+</li>
+<li>
+<p><code>VAR:</code> Standardmässig werden alle Variablen des Datensatzes ausgegeben. Mit dem VAR-Statement können Variablen ausgewählt werden.  </p>
+<p><code>proc print data=work.person noobs;
+var altersgruppe geschlecht;
+run;</code><br />
+<img alt="" src="img/report24.png" />  </p>
+</li>
+<li>
+<p><code>BY:</code> Mit dem BY-Statement wird eine separate Tabelle für jede Ausprägung der BY-Variable produziert (Wichtig: Der Datensatz muss nach der BY-Variable sortiert sein).  </p>
+<p><code>proc print data=work.person noobs;
+by geschlecht;
+run;</code><br />
+<img alt="" src="img/report25.png" />    </p>
+</li>
+</ul></div>
             </div>
         </div>
 
